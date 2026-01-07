@@ -11,13 +11,13 @@
 <p align="center">
     <br> 
     <b>English</b> | 
-    <a href="README-CN.md">简体中文</a> | 
-    <a href="README-DE.md">Deutsch</a> | 
-    <a href="README-ES.md">Español</a> | 
-    <a href="README-FR.md">Français</a> | 
-    <a href="README-JA.md">日本語</a> | 
-    <a href="README-KO.md">한국어</a> | 
-    <a href="README-RU.md">Русский</a>
+    <a href="docs/README/README-CN.md">简体中文</a> | 
+    <a href="docs/README/README-DE.md">Deutsch</a> | 
+    <a href="docs/README/README-ES.md">Español</a> | 
+    <a href="docs/README/README-FR.md">Français</a> | 
+    <a href="docs/README/README-JA.md">日本語</a> | 
+    <a href="docs/README/README-KO.md">한국어</a> | 
+    <a href="docs/README/README-RU.md">Русский</a>
 </p>
 
 <p align="center">

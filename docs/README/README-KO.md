@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="resources/icons/icon-128.png" width="80" alt="Logo" />
+  <img src="../../resources/icons/icon-128.png" width="80" alt="Logo" />
 </p>
 
 <h1 align="center">TapWord Translator</h1>
@@ -10,7 +10,7 @@
 
 <p align="center">
     <br> 
-    <a href="README.md">English</a> | 
+    <a href="../../README.md">English</a> | 
     <a href="README-CN.md">简体中文</a> | 
     <a href="README-DE.md">Deutsch</a> | 
     <a href="README-ES.md">Español</a> | 
@@ -33,7 +33,7 @@
 
 ---
 
-![TapWord Translator 데모](resources/public/demo.gif)
+![TapWord Translator 데모](../../resources/public/demo.gif)
 
 ## 📖 소개
 

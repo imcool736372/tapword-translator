@@ -1,4 +1,4 @@
-# AI Click Translator
+# TapWord Translator
 
 A smart AI-powered translation browser extension that provides context-aware translations for selected text on web pages.
 

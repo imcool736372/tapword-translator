@@ -1,10 +1,12 @@
-Last updated on: 2026-01-02
+Last updated on: 2026-01-07
 
 # 8_generate: Local LLM-based Translation Generation
 
 ## Module Overview
 
-This module provides direct LLM-based translation generation by assembling prompts locally and calling LLM APIs directly, without relying on cloud backend translation APIs. It enables users to configure their own API keys and URLs for various LLM providers (OpenAI, Qwen, Gemini, etc.), offering flexibility and privacy.
+This module provides direct LLM-based translation generation by assembling prompts locally and calling LLM APIs directly, without relying on a cloud backend. It enables users to configure their own API keys and URLs for various LLM providers (OpenAI, Qwen, Gemini, etc.), offering flexibility and privacy.
+
+It supports both word-level and fragment-level translation with rich context analysis.
 
 ## File Structure
 
@@ -15,173 +17,133 @@ This module provides direct LLM-based translation generation by assembling promp
 ├── constants/
 │   └── GenerateConstants.ts            # Default configurations and model settings
 ├── services/
-│   ├── WordTranslationService.ts       # Orchestrates word translation logic (class-based)
+│   ├── FragmentTranslationService.ts   # Orchestrates fragment/phrase translation logic
+│   ├── WordTranslationService.ts       # Orchestrates single-word translation logic
 │   └── llm/
-│       └── OpenAICompatibleClient.ts   # OpenAI-compatible LLM API client
+│       └── OpenAICompatibleClient.ts   # Generic OpenAI-compatible LLM API client
 ├── types/
 │   └── GenerateTypes.ts                # TypeScript types for requests, responses, and configs
 └── utils/
+    ├── languageUtils.ts                # Language name and code utilities
     ├── promptLoader.ts                 # Loads prompt templates from resources
     └── templateRenderer.ts             # Renders prompt templates with variables
 ```
 
 Prompt assets:
 ```
-resources/8_generate/word_translation/
-├── system_prompt.txt                   # System prompt for word translation
-├── user_prompt_template.txt            # User prompt template with placeholders
-└── en/
-    └── fewshot.json                    # Few-shot examples (English)
+resources/8_generate/
+├── fragment_translation/
+│   ├── system_prompt.txt
+│   └── user_prompt_template.txt
+├── fragment_translation_only/
+│   ├── system_prompt.txt
+│   └── user_prompt_template.txt
+└── word_translation/
+    ├── system_prompt.txt
+    ├── user_prompt_template.txt
+    └── en/
+        └── fewshot.json
 ```
 
 ## Core Components
 
 ### 1. Business Logic (`services/`)
 
-- **`services/WordTranslationService.ts`**: Main service class for word translation
-  - Pre-initializes system prompts and user prompt templates
-  - Manages OpenAI-compatible LLM client instance
-  - Builds messages with system prompt, few-shot examples, and user prompt
-  - Parses and validates JSON response
-  - Returns structured translation result
-  - Provides both class-based and convenience function APIs
+- **`services/WordTranslationService.ts`**: Main service class for **single-word** translation.
+  - Initializes prompts and the LLM client.
+  - Constructs detailed user prompts including context, sentence structure, and metadata.
+  - Loads language-specific few-shot examples to improve accuracy.
+  - Parses the structured JSON response from the LLM.
 
-- **`services/llm/OpenAICompatibleClient.ts`**: Generic OpenAI-compatible LLM client
-  - Supports multiple providers (OpenAI, Qwen, Gemini, etc.)
-  - Enforces JSON response format
-  - Handles timeouts, rate limits, and errors
-  - Maps provider errors to application errors
+- **`services/FragmentTranslationService.ts`**: A dedicated service for translating **multi-word fragments or phrases**.
+  - Handles two scenarios: translating a fragment within a full sentence, or translating a fragment in isolation.
+  - Dynamically selects the appropriate prompt (`fragment_translation` vs. `fragment_translation_only`) based on whether the surrounding sentence is provided.
+  - Builds user prompts with contextual information.
+
+- **`services/llm/OpenAICompatibleClient.ts`**: A generic client for interacting with any LLM that follows the OpenAI API signature.
+  - Enforces JSON output from the model.
+  - Manages API calls, including timeouts and error handling.
+  - Maps provider-specific errors to standardized application errors.
 
 ### 2. Data Types (`types/`)
 
-- **`types/GenerateTypes.ts`**:
-  - `WordTranslationRequest`: Input parameters for word translation (word, context, languages)
-  - `WordTranslationResult`: Structured output (word translation, fragment translation)
-  - `LLMConfig`: Configuration for LLM provider (apiKey, baseUrl, model, etc.)
-  - `ChatMessage`: Message format for LLM API calls
+- **`types/GenerateTypes.ts`**: Contains all TypeScript type definitions for the module.
+  - `LLMConfig`: Configuration for the LLM provider (apiKey, baseUrl, model).
+  - `WordTranslationRequest`, `WordTranslationResult`: Input and output for word translation.
+  - `FragmentTranslationRequest`, `FragmentTranslationResult`: Input and output for fragment translation.
+  - `ChatMessage`: The message structure for LLM API calls.
 
 ### 3. Utilities (`utils/`)
 
-- **`utils/promptLoader.ts`**: Loads prompt templates and few-shot examples
-  - Caches loaded prompts for performance
-  - Supports language-specific few-shot examples with fallback to English
-  - Validates prompt file existence
-
-- **`utils/templateRenderer.ts`**: Renders prompt templates
-  - Substitutes variables in template placeholders (${variable})
-  - Normalizes whitespace and formatting
-  - Simple and straightforward - all section building done in service layer
+- **`utils/promptLoader.ts`**: Loads and caches prompt content (system prompts, user templates, few-shot examples) from the `resources/` directory.
+- **`utils/templateRenderer.ts`**: A simple utility to substitute variables in prompt templates.
+- **`utils/languageUtils.ts`**: Provides helper functions to convert language codes (e.g., `en`, `zh-CN`) into full, human-readable names (e.g., "English", "Chinese").
 
 ### 4. Constants (`constants/`)
 
-- **`constants/GenerateConstants.ts`**:
-  - Default model configurations (temperature, max tokens, timeout)
-  - Model name mappings
-  - Prompt file paths
+- **`constants/GenerateConstants.ts`**: Defines default model parameters (temperature, max tokens), task names, and paths to prompt files.
 
 ### 5. Module Entry Point (`index.ts`)
 
-- Serves as the public API for the module
-- Explicitly exports core functions and types
-- Provides clean interface for other modules to consume
+- Serves as the public API for the `8_generate` module.
+- Exports all necessary services, types, and constants for external consumption, including:
+  - `WordTranslationService`, `createWordTranslationService`, `translateWord`
+  - `FragmentTranslationService`, `createFragmentTranslationService`, `translateFragment`
+  - `LLMConfig`, `WordTranslationRequest`, `FragmentTranslationRequest`, etc.
 
 ## Usage Example
+
+### Word Translation
 
 ```typescript
 import * as generateModule from '@/8_generate';
 
-// Configure LLM provider (example with OpenAI)
+// 1. Configure LLM provider
 const config: generateModule.LLMConfig = {
-    apiKey: 'sk-xxx...', // User's API key
+    apiKey: 'sk-xxx...',
     baseUrl: 'https://api.openai.com/v1',
     model: 'gpt-4',
-    temperature: 0.35,
-    maxTokens: 1200,
-    timeout: 10000
 };
 
-// Option 1: One-off translation (convenience function)
-const result1 = await generateModule.translateWord({
+// 2. Translate a word using the convenience function
+const result = await generateModule.translateWord({
     word: 'light',
+    leadingText: 'The room was filled with natural ',
+    trailingText: ' from the large windows.',
     sourceLanguage: 'en',
-    targetLanguage: 'zh'
+    targetLanguage: 'zh',
 }, config);
 
-console.log(result1.wordTranslation); // "光"
+console.log(result.wordTranslation);      // "光线"
+console.log(result.fragmentTranslation);  // "房间里充满了来自大窗户的自然光线。"
+```
 
-// Option 2: Reusable service instance (recommended for multiple translations)
-const service = await generateModule.createWordTranslationService(config);
+### Fragment (Phrase) Translation
 
-// Translate multiple words with the same service
-const result2 = await service.translateWord({
-    word: 'light',
-    leadingText: 'The room was filled with natural ',
-    trailingText: ' from the large windows.',
-    sourceLanguage: 'en',
-    targetLanguage: 'zh',
-});
+```typescript
+import * as generateModule from '@/8_generate';
 
-console.log(result2.wordTranslation);      // "光线"
-console.log(result2.fragmentTranslation);  // "房间里充满了来自大窗户的自然光线。"
-
-// Option 3: Manual service instantiation (for advanced control)
-const manualService = new generateModule.WordTranslationService(config);
-await manualService.initialize();
-
-const result3 = await manualService.translateWord({
-    word: 'light',
-    leadingText: 'The room was filled with natural ',
-    trailingText: ' from the large windows.',
-    sourceLanguage: 'en',
-    targetLanguage: 'zh',
-    contextInfo: {
-        previousSentences: ['He opened the curtains.'],
-        nextSentences: ['It made the space feel warm and inviting.'],
-        sourceTitle: 'Harry Potter and the Philosopher\'s Stone',
-        sourceAuthor: 'J.K. Rowling',
-        sourceType: 'book'
-    }
-});
-
-console.log(result3.wordTranslation);      // "光线"
-console.log(result3.fragmentTranslation);  // "房间里充满了来自大窗户的自然光线。"
-
-// Example with different LLM providers (Qwen)
-const qwenConfig: generateModule.LLMConfig = {
-    apiKey: 'your-qwen-api-key',
-    baseUrl: 'https://dashscope.aliyuncs.com/compatible-mode/v1',
-    model: 'qwen-max',
-    temperature: 0.35,
-    maxTokens: 1200,
-    timeout: 10000
+const config: generateModule.LLMConfig = {
+    apiKey: 'sk-xxx...',
+    baseUrl: 'https://api.openai.com/v1',
+    model: 'gpt-4',
 };
 
-const qwenService = await generateModule.createWordTranslationService(qwenConfig);
+// Use the dedicated fragment translation function
+const fragmentResult = await generateModule.translateFragment({
+    fragment: 'filled with natural light',
+    leadingText: 'The room was ',
+    trailingText: ' from the large windows.',
+    sourceLanguage: 'en',
+    targetLanguage: 'fr',
+}, config);
 
-const result4 = await qwenService.translateWord({
-    word: '光',
-    leadingText: '房间里充满了来自大窗户的自然',
-    trailingText: '。',
-    sourceLanguage: 'zh',
-    targetLanguage: 'en'
-});
-
-console.log(result4.wordTranslation);      // "light"
-console.log(result4.fragmentTranslation);  // "The room was filled with natural light from the large windows."
+console.log(fragmentResult.translation);            // "remplie de lumière naturelle"
+console.log(fragmentResult.sentenceTranslation);    // "La pièce était remplie de lumière naturelle provenant des grandes fenêtres."
 ```
 
 ## Development Notes
 
-- **Import Style**: Always use `@/` prefix for absolute imports
-- **Namespace Imports**: Use `import * as module from '...'` for functions and variables
-- **Error Handling**: All LLM API errors are mapped to application-level errors
-- **Prompt Files**: Must be placed in `resources/8_generate/` directory
-- **Testing**: Do not run tests unless explicitly requested
-
-## Future Extensions
-
-This module is designed to be extensible:
-- Fragment translation (multi-word/phrase translation)
-- Sentence translation
-- Example sentence generation
-- Dictionary summarization
+- **Import Style**: Always use the `@/` prefix for absolute imports (`import * as module from '@/path/to/module'`).
+- **Error Handling**: All LLM API errors are mapped to application-level errors for consistent handling.
+- **Prompt Files**: All prompt-related text files are stored in `resources/8_generate/`.
