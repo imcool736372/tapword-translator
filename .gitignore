@@ -70,3 +70,7 @@ logs/
 
 #personal files
 other/
+
+#other
+GEMINI.md
+CLAUDE.md
