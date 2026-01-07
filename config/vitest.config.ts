@@ -15,10 +15,10 @@ export default defineConfig({
     },
     resolve: {
         alias: {
-            '@': path.resolve(__dirname, './src'),
-            '@utils': path.resolve(__dirname, './src/0_common/utils'),
-            '@types': path.resolve(__dirname, './src/0_common/types'),
-            '@constants': path.resolve(__dirname, './src/0_common/constants'),
+            '@': path.resolve(__dirname, '../src'),
+            '@utils': path.resolve(__dirname, '../src/0_common/utils'),
+            '@types': path.resolve(__dirname, '../src/0_common/types'),
+            '@constants': path.resolve(__dirname, '../src/0_common/constants'),
         },
     },
 });
