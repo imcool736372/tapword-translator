@@ -18,6 +18,7 @@
         "package": "npm run build:prod && node scripts/package-with-version.mjs",
         "package:firefox": "npm run build:firefox && node scripts/package-with-version.mjs firefox",
         "package:source": "node scripts/package-source-with-version.mjs",
+        "package:community": "npm run build:community && node scripts/package-with-version.mjs community",
         
         "prebuild:community": "node scripts/prepare-community-credentials.mjs",
         "dev:community": "npm run prebuild:community && vite -c vite.config.ts --mode community",

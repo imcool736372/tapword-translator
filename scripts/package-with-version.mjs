@@ -20,7 +20,7 @@ async function packageExtension(buildTarget = 'chromium') {
         console.log(`📦 Packaging extension version: ${version} (${buildTarget})`);
 
         // Create zip file with version number and target suffix
-        const zipFileName = `extension-v${version}-${buildTarget}.zip`;
+        const zipFileName = `TapWord-Translator-v${version}-${buildTarget}.zip`;
         const distPath = join(projectRoot, 'dist');
 
         console.log(`🗜️  Creating ${zipFileName}...`);
