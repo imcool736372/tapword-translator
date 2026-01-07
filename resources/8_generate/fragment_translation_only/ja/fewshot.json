@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nJapanese\n\n# Target Fragment\ndusty shelves\n\n# Context\nThe library basement had been locked for years. <fragment>dusty shelves</fragment> Light fell in narrow beams."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"埃をかぶった棚\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nJapanese\n\n# Target Fragment\nfading laughter\n\n# Context\nThe party was ending. <fragment>fading laughter</fragment> Only a few guests remained near the doorway."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"消えかけの笑い声\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nJapanese\n\n# Target Fragment\nfresh ink\n\n# Context\nShe signed the contract quickly. <fragment>fresh ink</fragment> The window was open, letting in cold air."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"乾いていないインク\"}"
+    }
+]

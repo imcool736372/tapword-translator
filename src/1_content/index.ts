@@ -1,0 +1,81 @@
+/**
+ * Content Script - Main Entry Point
+ *
+ * Coordinates the translation workflow:
+ * 1. Text selection detection
+ * 2. Translation icon display (for manual selection)
+ * 3. Direct translation trigger (for double-click)
+ * 4. Translation result rendering
+ */
+
+import type { UserSettings } from "@/0_common/types"
+import { DEFAULT_USER_SETTINGS } from "@/0_common/types"
+import * as loggerModule from "@/0_common/utils/logger"
+import * as storageManager from "@/0_common/utils/storageManager"
+import * as selectionHandler from "@/1_content/handlers/selectionHandler"
+import "@/1_content/resources/content.css"
+import "@/1_content/resources/modal.css"
+import * as iconManager from "@/1_content/ui/iconManager"
+
+const logger = loggerModule.createLogger("content-script")
+
+logger.info("AI Click Translator - Content script loaded")
+
+// Module-level user settings (loaded during init)
+let userSettings: UserSettings | null = null
+
+/**
+ * Get current user settings
+ */
+export function getCachedUserSettings(): UserSettings | null {
+    return userSettings
+}
+
+/**
+ * Initialize user settings from storage
+ * Loads settings from chrome.storage.sync and sets up change listener
+ */
+async function initializeUserSettings(): Promise<void> {
+    // Load user settings from storage
+    try {
+        userSettings = await storageManager.getUserSettings()
+        logger.info("User settings loaded:", userSettings)
+    } catch (error) {
+        logger.error("Failed to load user settings, using defaults:", error)
+        userSettings = DEFAULT_USER_SETTINGS
+    }
+
+    // Listen for storage changes to update settings dynamically
+    chrome.storage.onChanged.addListener((changes, areaName) => {
+        if (areaName === "sync" && changes.userSettings) {
+            const newSettings = changes.userSettings.newValue as UserSettings
+            userSettings = newSettings
+            logger.info("User settings updated:", newSettings)
+        }
+    })
+}
+
+/**
+ * Initialize the content script
+ */
+async function init(): Promise<void> {
+    // Initialize user settings
+    await initializeUserSettings()
+
+    // Listen for double-click to trigger direct translation
+    document.addEventListener("dblclick", selectionHandler.handleDoubleClick)
+
+    // Listen for text selection (for manual drag selection)
+    document.addEventListener("mouseup", selectionHandler.handleTextSelection)
+
+    // Listen for clicks on other text elements to hide icon
+    document.addEventListener("mousedown", selectionHandler.handleDocumentClick)
+
+    // Listen for scroll to hide icon
+    document.addEventListener("scroll", iconManager.removeTranslationIcon, { passive: true })
+
+    logger.info("AI Click Translator - Event listeners registered")
+}
+
+// Start the extension
+init()

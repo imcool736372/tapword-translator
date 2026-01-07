@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nFrench\n\n# Target Word\nspark\n\n# Text Fragment\nA single spark started the small fire\n\n# Paragraph Context\nThe logs were piled too close. <fragment>A single <target>spark</target> started the small fire.</fragment> Everyone reacted immediately."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"word_translation\":\"étincelle\",\"fragment_translation\":\"Une seule étincelle a déclenché le petit incendie\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nFrench\n\n# Target Word\nsteady\n\n# Dictionary Definition\nAdjective: firm, regular, not shaking or changing suddenly\n\n# Text Fragment\nKeep a steady pace as you climb the hill\n\n# Paragraph Context\nThe path was long but not steep. <fragment>Keep a <target>steady</target> pace as you climb the hill.</fragment> We will rest at the top."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"word_translation\":\"stable\",\"fragment_translation\":\"Garde un rythme stable en montant la colline\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nFrench\n\n# Target Word\nshoreline\n\n# Text Fragment\nMist rolled over the quiet shoreline at dawn\n\n# Paragraph Context\nWaves were barely audible. <fragment>Mist rolled over the quiet <target>shoreline</target> at dawn.</fragment> Fishermen waited by their boats."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"word_translation\":\"littoral\",\"fragment_translation\":\"La brume a envahi le littoral tranquille à l'aube\"}"
+    }
+]

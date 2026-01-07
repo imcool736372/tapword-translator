@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nFrench\n\n# Target Fragment\nthin layer of frost\n\n# Target Sentence\nA thin layer of frost covered the windowpane\n\n# Context\nIt was the first cold morning of the season. <sentence>A <fragment>thin layer of frost</fragment> covered the windowpane</sentence> Breath lingered in the air."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"fine couche de givre\",\"sentence_translation\":\"Une fine couche de givre recouvrait la vitre\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nFrench\n\n# Target Fragment\nsteady rhythm\n\n# Target Sentence\nThe drummer kept a steady rhythm through the chorus\n\n# Context\nThe crowd swayed together. <sentence>The drummer kept a <fragment>steady rhythm</fragment> through the chorus</sentence> Lights flashed in time with the beat."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"rythme régulier\",\"sentence_translation\":\"Le batteur a gardé un rythme régulier pendant le refrain\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nFrench\n\n# Target Fragment\nfaint perfume\n\n# Target Sentence\nA faint perfume lingered in the hallway\n\n# Context\nSomeone had just walked past. <sentence>A <fragment>faint perfume</fragment> lingered in the hallway</sentence> The door at the end slowly closed."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"parfum léger\",\"sentence_translation\":\"Un parfum léger flottait encore dans le couloir\"}"
+    }
+]

@@ -1,0 +1,323 @@
+/**
+ * Context Extractor V2
+ *
+ * A simpler, clearer context extraction utility focused on sentences.
+ * Input: DOM Range of the user's selection.
+ * Output: Selected text, leading/trailing text within current sentence,
+ *         full current sentence, and neighboring sentences.
+ */
+
+import * as domSanitizer from "@/1_content/utils/domSanitizer"
+// logger intentionally omitted for minimal footprint
+
+// ---------------------------------------------------------------------------
+// Public Types
+// ---------------------------------------------------------------------------
+
+export interface ExtractedContextV2 {
+    text: string
+    leadingText: string
+    trailingText: string
+    currentSentence: string
+    previousSentences: string[]
+    nextSentences: string[]
+}
+
+export interface ContextV2Options {
+    /** Number of previous sentences to return (default 1) */
+    prevCount?: number
+    /** Number of next sentences to return (default 1) */
+    nextCount?: number
+    /** Additional block-level tags that act as hard sentence boundaries/root scopes */
+    boundaryTags?: string[]
+    /** Sentence terminators used to detect sentence boundaries */
+    terminators?: string[]
+}
+
+// ---------------------------------------------------------------------------
+// Defaults
+// ---------------------------------------------------------------------------
+
+const DEFAULT_TERMINATORS = [".", "?", "!", "。", "？", "！", "…"]
+
+// Keep minimal but robust defaults; <p> is the primary boundary, add common blocks
+const DEFAULT_BOUNDARY_TAGS = ["P", "DIV", "LI", "H1", "H2", "H3", "H4", "H5", "H6", "BLOCKQUOTE"]
+
+// ---------------------------------------------------------------------------
+// Public API
+// ---------------------------------------------------------------------------
+
+/**
+ * Extract sentence-level context around a selection range.
+ */
+export function extractContextV2(range: Range, options: ContextV2Options = {}): ExtractedContextV2 {
+    if (range.collapsed) {
+        return minimal("")
+    }
+
+    const terminators = new Set((options.terminators ?? DEFAULT_TERMINATORS).filter(Boolean))
+    const boundaryTags = new Set((options.boundaryTags ?? DEFAULT_BOUNDARY_TAGS).map((t) => t.toUpperCase()))
+    const prevCount = Math.max(0, options.prevCount ?? 1)
+    const nextCount = Math.max(0, options.nextCount ?? 1)
+
+    // Selected text (sanitized)
+    const text = domSanitizer.getCleanTextFromRange(range).trim()
+
+    // Resolve a sensible root scope (nearest boundary tag or BODY)
+    const root = findBoundaryRoot(range.commonAncestorContainer, boundaryTags) ?? document.body
+
+    // Normalize boundaries to text positions
+    const startPos = normalizeToTextPosition(root, range.startContainer, range.startOffset)
+    const endPos = normalizeToTextPosition(root, range.endContainer, range.endOffset)
+
+    if (!startPos || !endPos) {
+        return minimal(text)
+    }
+
+    // Locate sentence boundaries within the same root scope
+    const sentenceStart = findSentenceStartWithin(root, startPos.node, startPos.offset, terminators)
+    const sentenceEnd = findSentenceEndWithin(root, endPos.node, endPos.offset, terminators)
+
+    if (!sentenceStart || !sentenceEnd) {
+        return minimal(text)
+    }
+
+    // Build leading/trailing text and current sentence
+    const leadingText = extractTextBetween(sentenceStart, startPos)
+    const trailingText = extractTextBetween(endPos, sentenceEnd)
+    const currentSentence = collapseWhitespace(`${leadingText}${text}${trailingText}`).trim()
+
+    // Previous/Next sentences by aggregating text outside current sentence within root
+    const previousSentences = extractNeighborSentences(root, null, sentenceStart, terminators, "previous", prevCount)
+    const nextSentences = extractNeighborSentences(root, sentenceEnd, null, terminators, "next", nextCount)
+
+    return {
+        text,
+        leadingText,
+        trailingText,
+        currentSentence,
+        previousSentences,
+        nextSentences,
+    }
+}
+
+// ---------------------------------------------------------------------------
+// Internal helpers
+// ---------------------------------------------------------------------------
+
+interface NodePosition {
+    node: Text
+    offset: number
+}
+
+function minimal(text: string): ExtractedContextV2 {
+    return { text, leadingText: "", trailingText: "", currentSentence: text, previousSentences: [], nextSentences: [] }
+}
+
+function collapseWhitespace(s: string): string {
+    return s.replace(/\s+/g, " ")
+}
+
+function findBoundaryRoot(node: Node, boundaryTags: Set<string>): Element | null {
+    let cur: Node | null = node.nodeType === Node.ELEMENT_NODE ? node : node.parentElement
+    while (cur && cur !== document.body) {
+        if (cur.nodeType === Node.ELEMENT_NODE) {
+            const el = cur as Element
+            if (boundaryTags.has(el.tagName)) return el
+        }
+        cur = cur.parentElement
+    }
+    return document.body
+}
+
+function createLocalTextWalker(root: Node): TreeWalker {
+    const filter: NodeFilter = {
+        acceptNode: (n: Node) => {
+            if (n.nodeType !== Node.TEXT_NODE) return NodeFilter.FILTER_SKIP
+            return domSanitizer.isInsideIgnoredElement(n) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT
+        },
+    }
+    return document.createTreeWalker(root, NodeFilter.SHOW_TEXT, filter)
+}
+
+function getFirstTextNode(root: Node): Text | null {
+    if (root.nodeType === Node.TEXT_NODE) return root as Text
+    const walker = createLocalTextWalker(root)
+    const n = walker.nextNode()
+    return (n as Text) || null
+}
+
+function getLastTextNode(root: Node): Text | null {
+    if (root.nodeType === Node.TEXT_NODE) return root as Text
+    const walker = createLocalTextWalker(root)
+    let last: Node | null = null
+    let cur: Node | null
+    while ((cur = walker.nextNode())) last = cur
+    return (last as Text) || null
+}
+
+function getPrevTextNode(root: Node, from: Node): Text | null {
+    const walker = createLocalTextWalker(root)
+    walker.currentNode = from
+    const n = walker.previousNode()
+    return (n as Text) || null
+}
+
+function getNextTextNode(root: Node, from: Node): Text | null {
+    const walker = createLocalTextWalker(root)
+    walker.currentNode = from
+    const n = walker.nextNode()
+    return (n as Text) || null
+}
+
+function textLength(t: Text): number {
+    return (t.textContent || "").length
+}
+
+function normalizeToTextPosition(root: Node, node: Node, offset: number): NodePosition | null {
+    if (node.nodeType === Node.TEXT_NODE) {
+        const t = node as Text
+        const clamped = Math.min(Math.max(offset, 0), textLength(t))
+        return { node: t, offset: clamped }
+    }
+
+    // If element: try to find a text node at or near this boundary
+    // Prefer the next text node in document order when offset points past children
+    const el = node as Element
+    if (el.childNodes && el.childNodes.length > 0) {
+        // Try to descend to the first text node if offset == 0
+        if (offset === 0) {
+            const first = getFirstTextNode(el)
+            if (first) return { node: first, offset: 0 }
+        }
+        // Try to use the last text node if offset >= child count
+        if (offset >= el.childNodes.length) {
+            const last = getLastTextNode(el)
+            if (last) return { node: last, offset: textLength(last) }
+        }
+    }
+
+    // Fallback: use nearest text node within root
+    const after = getNextTextNode(root, node)
+    if (after) return { node: after, offset: 0 }
+    const before = getPrevTextNode(root, node)
+    if (before) return { node: before, offset: textLength(before) }
+    return null
+}
+
+function findSentenceStartWithin(root: Node, node: Text, offset: number, terminators: Set<string>): NodePosition | null {
+    // Inspect current node before offset
+    const text = node.textContent || ""
+    const before = text.substring(0, offset)
+    const idx = lastTerminatorIndex(before, terminators)
+    if (idx >= 0) return { node, offset: idx + 1 }
+
+    // Traverse backwards across text nodes within root
+    let cur: Text | null = node
+    while ((cur = getPrevTextNode(root, cur))) {
+        const s = cur.textContent || ""
+        const j = lastTerminatorIndex(s, terminators)
+        if (j >= 0) return { node: cur, offset: j + 1 }
+    }
+
+    // Reached root start
+    const first = getFirstTextNode(root)
+    return first ? { node: first, offset: 0 } : null
+}
+
+function findSentenceEndWithin(root: Node, node: Text, offset: number, terminators: Set<string>): NodePosition | null {
+    // Inspect current node after offset
+    const text = node.textContent || ""
+    const after = text.substring(offset)
+    const idx = firstTerminatorIndex(after, terminators)
+    if (idx >= 0) return { node, offset: offset + idx + 1 }
+
+    // Traverse forward across text nodes within root
+    let cur: Text | null = node
+    while ((cur = getNextTextNode(root, cur))) {
+        const s = cur.textContent || ""
+        const j = firstTerminatorIndex(s, terminators)
+        if (j >= 0) return { node: cur, offset: j + 1 }
+    }
+
+    // Reached root end
+    const last = getLastTextNode(root)
+    return last ? { node: last, offset: textLength(last) } : null
+}
+
+function extractTextBetween(start: NodePosition, end: NodePosition): string {
+    const r = document.createRange()
+    r.setStart(start.node, start.offset)
+    r.setEnd(end.node, end.offset)
+    const raw = domSanitizer.getCleanTextFromRange(r)
+    r.detach()
+    return collapseWhitespace(raw)
+}
+
+function lastTerminatorIndex(s: string, terminators: Set<string>): number {
+    let best = -1
+    for (const ch of terminators) {
+        const i = s.lastIndexOf(ch)
+        if (i > best) best = i
+    }
+    return best
+}
+
+function firstTerminatorIndex(s: string, terminators: Set<string>): number {
+    let best = Number.POSITIVE_INFINITY
+    for (const ch of terminators) {
+        const i = s.indexOf(ch)
+        if (i !== -1 && i < best) best = i
+    }
+    return best === Number.POSITIVE_INFINITY ? -1 : best
+}
+
+function buildSplitRegex(terminators: Set<string>): RegExp {
+    const escape = (c: string) => c.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+    // Char class for single-character terminators
+    const chars = Array.from(terminators).map(escape).join("")
+    // Split after a terminator, consume trailing spaces
+    return new RegExp(`(?<=[${chars}])\\s*`, "g")
+}
+
+function extractNeighborSentences(
+    root: Node,
+    fromExclusive: NodePosition | null,
+    toExclusive: NodePosition | null,
+    terminators: Set<string>,
+    direction: "previous" | "next",
+    count: number
+): string[] {
+    if (count === 0) return []
+
+    const r = document.createRange()
+
+    if (direction === "previous") {
+        // [root start, sentenceStart)
+        const first = getFirstTextNode(root)
+        if (!first || !toExclusive) return []
+        r.setStart(first, 0)
+        r.setEnd(toExclusive.node, toExclusive.offset)
+    } else {
+        // (sentenceEnd, root end]
+        const last = getLastTextNode(root)
+        if (!last || !fromExclusive) return []
+        r.setStart(fromExclusive.node, fromExclusive.offset)
+        r.setEnd(last, textLength(last))
+    }
+
+    const raw = domSanitizer.getCleanTextFromRange(r)
+    r.detach()
+
+    const splitRe = buildSplitRegex(terminators)
+    const parts = raw
+        .split(splitRe)
+        .map((s) => collapseWhitespace(s).trim())
+        .filter((s) => s.length > 0)
+
+    if (direction === "previous") {
+        return parts.slice(-count)
+    } else {
+        return parts.slice(0, count)
+    }
+}

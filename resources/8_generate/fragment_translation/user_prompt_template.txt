@@ -1,0 +1,16 @@
+${sourceLanguageSection}
+
+${targetLanguageSection}
+
+${targetFragmentSection}
+
+${targetSentenceSection}
+
+${contextSection}
+
+${sourceTypeSection}
+
+${sourceTitleSection}
+
+${sourceAuthorSection}
+

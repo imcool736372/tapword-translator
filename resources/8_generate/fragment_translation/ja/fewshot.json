@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nJapanese\n\n# Target Fragment\nold stone bridge\n\n# Target Sentence\nThey crossed the old stone bridge at dusk\n\n# Context\nFog drifted along the river. <sentence>They crossed the <fragment>old stone bridge</fragment> at dusk</sentence> Lanterns were just being lit in the town."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"古い石橋\",\"sentence_translation\":\"彼らは夕暮れに古い石橋を渡った\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nJapanese\n\n# Target Fragment\nquiet resolve\n\n# Target Sentence\nHer eyes showed a quiet resolve after hearing the news\n\n# Context\nThe announcement surprised everyone. <sentence>Her eyes showed a <fragment>quiet resolve</fragment> after hearing the news</sentence> She stood still, taking a deep breath."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"静かな決意\",\"sentence_translation\":\"その知らせを聞いた後、彼女の目には静かな決意が宿っていた\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nJapanese\n\n# Target Fragment\nrustling leaves\n\n# Target Sentence\nThe sound of rustling leaves filled the narrow path\n\n# Context\nAutumn winds blew through the forest. <sentence>The sound of <fragment>rustling leaves</fragment> filled the narrow path</sentence> The path was covered in red and gold."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"葉擦れの音\",\"sentence_translation\":\"細い道には葉擦れの音が満ちていた\"}"
+    }
+]

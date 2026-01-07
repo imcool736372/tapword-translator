@@ -1,0 +1,17 @@
+${sourceLanguageSection}
+
+${targetLanguageSection}
+
+${targetWordSection}
+
+${dictionaryDefinitionSection}
+
+${textFragmentSection}
+
+${paragraphContextSection}
+
+${sourceTypeSection}
+
+${sourceTitleSection}
+
+${sourceAuthorSection}

@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nItalian\n\n# Target Fragment\nsoft drizzle\n\n# Target Sentence\nA soft drizzle cooled the streets at noon\n\n# Context\nMarket umbrellas were half-open. <sentence>A <fragment>soft drizzle</fragment> cooled the streets at noon</sentence> People walked quickly between shops."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"pioggerella leggera\",\"sentence_translation\":\"Una pioggerella leggera rinfrescò le strade a mezzogiorno\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nItalian\n\n# Target Fragment\nquiet harbor\n\n# Target Sentence\nBoats swayed in the quiet harbor after the storm\n\n# Context\nClouds were still low. <sentence>Boats swayed in the <fragment>quiet harbor</fragment> after the storm</sentence> Nets were spread out to dry on the dock."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"porto tranquillo\",\"sentence_translation\":\"Le barche ondeggiavano nel porto tranquillo dopo la tempesta\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nItalian\n\n# Target Fragment\nurgent whisper\n\n# Target Sentence\nAn urgent whisper passed between the guards\n\n# Context\nThe gate was about to close. <sentence>An <fragment>urgent whisper</fragment> passed between the guards</sentence> Footsteps hurried along the corridor."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"sussurro urgente\",\"sentence_translation\":\"Un sussurro urgente passò tra le guardie\"}"
+    }
+]

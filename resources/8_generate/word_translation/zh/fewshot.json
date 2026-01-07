@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nChinese\n\n# Target Word\nharbor\n\n# Text Fragment\nThe sailors steered toward the calm harbor at dusk\n\n# Paragraph Context\nThe storm had finally passed. <fragment>The sailors steered toward the calm <target>harbor</target> at dusk.</fragment> Lanterns flickered along the pier."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"word_translation\":\"港湾\",\"fragment_translation\":\"水手们在黄昏时把船驶向平静的港湾\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nChinese\n\n# Target Word\nrelay\n\n# Dictionary Definition\nVerb: to pass on information or a message to another person or group\n\n# Text Fragment\nShe will relay the message to the team tomorrow\n\n# Paragraph Context\nThe briefing ended quickly. <fragment>She will <target>relay</target> the message to the team tomorrow.</fragment> Everyone began packing up their laptops."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"word_translation\":\"传达\",\"fragment_translation\":\"她明天会把这个消息传达给团队\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nChinese\n\n# Target Word\nglimpse\n\n# Text Fragment\nHe caught a brief glimpse of the comet before the clouds closed in\n\n# Paragraph Context\nThe crowd waited in silence. <fragment>He caught a brief <target>glimpse</target> of the comet before the clouds closed in.</fragment> Moments later the sky was completely gray."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"word_translation\":\"一瞥\",\"fragment_translation\":\"在云层合拢前，他匆匆瞥见了那颗彗星\"}"
+    }
+]

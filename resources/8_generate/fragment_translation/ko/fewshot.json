@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nKorean\n\n# Target Fragment\nfaint melody\n\n# Target Sentence\nA faint melody drifted from the open window\n\n# Context\nNight markets were closing. <sentence>A <fragment>faint melody</fragment> drifted from the open window</sentence> Streetlights flickered in the alley below."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"희미한 멜로디\",\"sentence_translation\":\"열린 창문에서 희미한 멜로디가 흘러나왔다\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nKorean\n\n# Target Fragment\nsteady footsteps\n\n# Target Sentence\nOnly the steady footsteps echoed in the hallway\n\n# Context\nMost employees had left. <sentence>Only the <fragment>steady footsteps</fragment> echoed in the hallway</sentence> The fluorescent lights buzzed overhead."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"규칙적인 발소리\",\"sentence_translation\":\"복도에는 규칙적인 발소리만 메아리쳤다\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nKorean\n\n# Target Fragment\nfresh tracks\n\n# Target Sentence\nWe found fresh tracks leading toward the creek\n\n# Context\nSnow had fallen overnight. <sentence>We found <fragment>fresh tracks</fragment> leading toward the creek</sentence> The forest was silent except for our breath."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"갓 남은 흔적\",\"sentence_translation\":\"우리는 개울을 향해 이어지는 갓 남은 흔적을 발견했다\"}"
+    }
+]

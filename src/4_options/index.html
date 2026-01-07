@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" class="loading">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TapWord Settings</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="logo">
+        <img src="/resources/icons/icon-128.png" alt="TapWord logo" class="logo-image" />
+        <div class="logo-text">
+          <div class="title-wrapper">
+            <h1 class="app-name" data-i18n-key="popup.title">TapWord</h1>
+            <span class="app-subtitle" id="communitySubtitle" data-i18n-key="popup.communityEdition" style="display: none;">Community Edition</span>
+            <span class="version" id="versionDisplay"></span>
+          </div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="secondary-button" id="documentationButton" data-i18n-key="popup.websiteLink">访问官网</button>
+      </div>
+    </header>
+    <main class="main-content">
+      <aside class="sidebar">
+        <nav class="nav-menu">
+          <a href="#general-settings" class="nav-item active" data-section="general-settings" data-i18n-key="popup.section.general">General</a>
+          <a href="#display-settings" class="nav-item" data-section="display-settings" data-i18n-key="popup.section.text">Text</a>
+          <a href="#audio-settings" class="nav-item" data-section="audio-settings" data-i18n-key="popup.section.audio">Audio</a>
+          <a href="#appearance-settings" class="nav-item" data-section="appearance-settings" data-i18n-key="popup.section.appearance">Appearance</a>
+          <a href="#custom-api-settings" class="nav-item" data-section="custom-api-settings" data-i18n-key="popup.section.customApi">Custom API</a>
+        </nav>
+      </aside>
+      <section class="content">
+        <div id="general-settings" class="settings-section active">
+          <div class="section-header">
+            <h2 data-i18n-key="popup.section.general">General</h2>
+          </div>
+          <div class="card settings-card">
+            <div class="setting-item setting-item-master">
+              <div class="setting-info">
+                <label class="setting-label master-label" for="enableTapWord">
+                  <span data-i18n-key="popup.enableTapWord.label">Enable TapWord</span>
+                </label>
+                <p class="setting-helper" data-i18n-key="popup.enableTapWord.helper">Turn off to temporarily disable all translation actions.</p>
+              </div>
+              <label class="toggle-switch toggle-switch-master">
+                <input type="checkbox" id="enableTapWord" data-setting="enableTapWord">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="setting-item">
+              <div class="setting-info">
+                <label class="setting-label" for="targetLanguage" data-i18n-key="popup.targetLanguage.label">Target Language</label>
+              </div>
+              <div class="setting-control">
+                <select id="targetLanguage" data-setting="targetLanguage" class="select-input">
+                  <option value="en">English</option>
+                  <option value="zh">中文</option>
+                  <option value="es">Español</option>
+                  <option value="ja">日本語</option>
+                  <option value="fr">Français</option>
+                  <option value="de">Deutsch</option>
+                  <option value="ko">한국어</option>
+                  <option value="ru">Русский</option>
+                </select>
+              </div>
+            </div>
+            <div class="setting-item">
+              <div class="setting-info">
+                <label class="setting-label" for="showIcon">
+                  <span data-i18n-key="popup.showIcon.label">Show Translation Icon</span>
+                </label>
+                <p class="setting-helper" data-i18n-key="popup.showIcon.tooltip">Show a floating translate icon near selected text.</p>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="showIcon" data-setting="showIcon">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="setting-item">
+              <div class="setting-info">
+                <label class="setting-label" for="doubleClickTranslate" data-i18n-key="popup.doubleClickTranslate.label">Double-click to Translate</label>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="doubleClickTranslate" data-setting="doubleClickTranslate">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div id="display-settings" class="settings-section">
+          <div class="section-header">
+            <h2 data-i18n-key="popup.section.text">Text Settings</h2>
+          </div>
+          <div class="card settings-card">
+            <div class="setting-item">
+              <div class="setting-info">
+                <label class="setting-label" for="translationFontSizePreset" data-i18n-key="popup.translationFontSize.label">Translation Font Size</label>
+              </div>
+              <div class="setting-control">
+                <select id="translationFontSizePreset" data-setting="translationFontSizePreset" class="select-input">
+                  <option value="small" data-i18n-key="popup.translationFontSize.small">Small</option>
+                  <option value="medium" data-i18n-key="popup.translationFontSize.medium">Medium</option>
+                  <option value="large" data-i18n-key="popup.translationFontSize.large">Large</option>
+                  <option value="extraLarge" data-i18n-key="popup.translationFontSize.extraLarge">Extra Large</option>
+                </select>
+              </div>
+            </div>
+            <div class="setting-item">
+              <div class="setting-info">
+                <label class="setting-label" for="autoAdjustHeight">
+                  <span data-i18n-key="popup.autoAdjustHeight.label">Auto-adjust Line Height</span>
+                </label>
+                <p class="setting-helper" data-i18n-key="popup.autoAdjustHeight.tooltip">Improve readability by gently increasing line height for translated text.</p>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="autoAdjustHeight" data-setting="autoAdjustHeight">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-info">
+                <label class="setting-label" for="tooltipNextLineGapPx" data-i18n-key="popup.tooltipNextLineGapPx.label">Tooltip Next-line Gap (px)</label>
+                <p class="setting-helper" data-i18n-key="popup.tooltipNextLineGapPx.helper">Extra spacing reserved between the tooltip and the next line of text.</p>
+              </div>
+              <div class="setting-control">
+                <input type="number" id="tooltipNextLineGapPx" data-setting="tooltipNextLineGapPx" class="select-input" step="1" min="0" max="20" />
+                <p class="input-warning" id="tooltipNextLineGapPxWarning" data-i18n-key="popup.tooltipNextLineGapPx.warning">Value must be between 0 and 20</p>
+              </div>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-info">
+                <label class="setting-label" for="tooltipVerticalOffsetPx" data-i18n-key="popup.tooltipVerticalOffsetPx.label">Tooltip Vertical Offset (px)</label>
+                <p class="setting-helper" data-i18n-key="popup.tooltipVerticalOffsetPx.helper">Moves the tooltip up/down relative to the selected text (negative pulls upward).</p>
+              </div>
+              <div class="setting-control">
+                <input type="number" id="tooltipVerticalOffsetPx" data-setting="tooltipVerticalOffsetPx" class="select-input" step="1" min="0" max="20" />
+                <p class="input-warning" id="tooltipVerticalOffsetPxWarning" data-i18n-key="popup.tooltipVerticalOffsetPx.warning">Value must be between 0 and 20</p>
+              </div>
+            </div>
+
+            <div class="tooltip-preview" id="tooltipPreview">
+              <div class="tooltip-preview-stage" id="tooltipPreviewStage">
+                <p class="tooltip-preview-paragraph" id="tooltipPreviewParagraph">
+                  <span data-i18n-key="popup.preview.text1">The new AI model can</span> <span class="tooltip-preview-anchor tooltip-preview-anchor--word" id="tooltipPreviewAnchor1" data-i18n-key="popup.preview.word">comprehend</span> <span class="tooltip-preview-anchor tooltip-preview-anchor--phrase" id="tooltipPreviewAnchor" data-i18n-key="popup.preview.phrase">complex instructions</span><span data-i18n-key="popup.preview.text2">.</span>
+                  <br />
+                  <span data-i18n-key="popup.preview.nextLine">Users have reported significant improvements in accuracy.</span>
+                </p>
+                <div class="tooltip-preview-tooltip" id="tooltipPreviewTooltip1" data-i18n-key="popup.preview.wordTranslation">理解</div>
+                <div class="tooltip-preview-tooltip" id="tooltipPreviewTooltip" data-i18n-key="popup.preview.phraseTranslation">复杂的指令</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="audio-settings" class="settings-section">
+          <div class="section-header">
+            <h2 data-i18n-key="popup.section.audio">Audio Settings</h2>
+          </div>
+          <div class="card settings-card">
+            <div class="setting-item" id="autoPlayAudioSettingItem">
+              <div class="setting-info">
+                <label class="setting-label" for="autoPlayAudio" data-i18n-key="popup.autoPlayAudio.label">Auto-play Word Pronunciation</label>
+                <p class="setting-helper community-note" id="autoPlayAudioCommunityNote"></p>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="autoPlayAudio" data-setting="autoPlayAudio">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div id="appearance-settings" class="settings-section">
+          <div class="section-header">
+            <h2 data-i18n-key="popup.section.appearance">Appearance Settings</h2>
+          </div>
+          <div class="card settings-card">
+            <div class="setting-item">
+              <div class="setting-info">
+                <label class="setting-label" data-i18n-key="popup.iconColor.label">Icon Color</label>
+              </div>
+            </div>
+            <div class="icon-picker-container">
+              <label class="icon-option">
+                <input type="radio" name="iconColor" value="pink" data-setting="iconColor">
+                <span class="icon-preview">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" fill="#F472B6" opacity="0.85"/>
+                    <path d="M8 9L11 12L8 15M14 9L17 12L14 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </label>
+              <label class="icon-option">
+                <input type="radio" name="iconColor" value="blue" data-setting="iconColor">
+                <span class="icon-preview">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" fill="#60A5FA" opacity="0.85"/>
+                    <path d="M8 9L11 12L8 15M14 9L17 12L14 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </label>
+              <label class="icon-option">
+                <input type="radio" name="iconColor" value="purple" data-setting="iconColor">
+                <span class="icon-preview">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" fill="#A78BFA" opacity="0.85"/>
+                    <path d="M8 9L11 12L8 15M14 9L17 12L14 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </label>
+              <label class="icon-option">
+                <input type="radio" name="iconColor" value="green" data-setting="iconColor">
+                <span class="icon-preview">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" fill="#4ADE80" opacity="0.85"/>
+                    <path d="M8 9L11 12L8 15M14 9L17 12L14 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </label>
+              <label class="icon-option">
+                <input type="radio" name="iconColor" value="orange" data-setting="iconColor">
+                <span class="icon-preview">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" fill="#FB923C" opacity="0.85"/>
+                    <path d="M8 9L11 12L8 15M14 9L17 12L14 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </label>
+              <label class="icon-option">
+                <input type="radio" name="iconColor" value="red" data-setting="iconColor">
+                <span class="icon-preview">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" fill="#F87171" opacity="0.85"/>
+                    <path d="M8 9L11 12L8 15M14 9L17 12L14 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </label>
+              <label class="icon-option">
+                <input type="radio" name="iconColor" value="teal" data-setting="iconColor">
+                <span class="icon-preview">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" fill="#2DD4BF" opacity="0.85"/>
+                    <path d="M8 9L11 12L8 15M14 9L17 12L14 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </label>
+              <label class="icon-option">
+                <input type="radio" name="iconColor" value="indigo" data-setting="iconColor">
+                <span class="icon-preview">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" fill="#818CF8" opacity="0.85"/>
+                    <path d="M8 9L11 12L8 15M14 9L17 12L14 15" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div id="custom-api-settings" class="settings-section">
+          <div class="section-header">
+            <h2 data-i18n-key="popup.section.customApi">Custom API</h2>
+            <p class="section-subtitle" data-i18n-key="popup.section.customApi.helper">Use your own API for translations.</p>
+          </div>
+          <div class="card settings-card" id="customApiCard">
+            <div class="setting-item" id="useCustomApiSettingItem">
+              <div class="setting-info">
+                <label class="setting-label" for="useCustomApi">
+                  <span data-i18n-key="popup.useCustomApi.label">Use Custom API</span>
+                </label>
+                <p class="setting-helper" data-i18n-key="popup.useCustomApi.helper">Route translations through your own OpenAI-compatible endpoint.</p>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="useCustomApi" data-setting="useCustomApi">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-info">
+                <label class="setting-label" for="customApiBaseUrl" data-i18n-key="popup.customApi.baseUrl.label">API Base URL</label>
+                <p class="setting-helper" data-i18n-key="popup.customApi.baseUrl.helper">Example: https://api.openai.com/v1</p>
+              </div>
+              <div class="setting-control">
+                <input type="url" id="customApiBaseUrl" data-setting="customApiBaseUrl" data-custom-api-control="true" class="select-input" placeholder="https://api.example.com/v1" />
+              </div>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-info">
+                <label class="setting-label" for="customApiKey" data-i18n-key="popup.customApi.apiKey.label">API Key</label>
+                <p class="setting-helper" data-i18n-key="popup.customApi.apiKey.helper">Your provider token (stored locally in browser storage).</p>
+              </div>
+              <div class="setting-control">
+                <input type="password" id="customApiKey" data-setting="customApiKey" data-custom-api-control="true" class="select-input" placeholder="sk-..." autocomplete="new-password" />
+              </div>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-info">
+                <label class="setting-label" for="customApiModel" data-i18n-key="popup.customApi.model.label">Model</label>
+                <p class="setting-helper" data-i18n-key="popup.customApi.model.helper">Example: gpt-4o-mini, qwen-plus</p>
+              </div>
+              <div class="setting-control">
+                <input type="text" id="customApiModel" data-setting="customApiModel" data-custom-api-control="true" class="select-input" placeholder="model-name" />
+              </div>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-info">
+                <label class="setting-label" for="validateCustomApiButton" data-i18n-key="popup.customApi.validate.label">Validate Settings</label>
+                <p class="setting-helper" data-i18n-key="popup.customApi.validate.helper">Run a quick test translation using your custom API.</p>
+              </div>
+              <div class="setting-control validation-control">
+                <button class="secondary-button" id="validateCustomApiButton" data-custom-api-control="true" data-i18n-key="popup.customApi.validate.button">Validate</button>
+                <p class="validation-status" id="validateCustomApiStatus"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script type="module" src="index.ts"></script>
+</body>
+</html>

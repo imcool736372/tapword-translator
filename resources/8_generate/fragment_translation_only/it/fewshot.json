@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nItalian\n\n# Target Fragment\nsteaming mug\n\n# Context\nShe set it on the desk beside a stack of notes. <fragment>steaming mug</fragment> Outside, rain tapped the window."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"tazza fumante\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nItalian\n\n# Target Fragment\nquiet oath\n\n# Context\nHe spoke it under his breath. <fragment>quiet oath</fragment> The room was filled with portraits of past leaders."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"giuramento sommesso\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nItalian\n\n# Target Fragment\ncracked pavement\n\n# Context\nRoots from nearby trees pushed the stones upward. <fragment>cracked pavement</fragment> Bikes rattled as they passed."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"marciapiede crepato\"}"
+    }
+]

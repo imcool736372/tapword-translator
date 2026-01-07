@@ -1,0 +1,65 @@
+{
+    "name": "tapword-translator",
+    "version": "0.3.0",
+    "description": "A smart AI-powered translation browser extension that provides context-aware translations",
+    "type": "module",
+    "scripts": {
+        "prebuild:dev": "KEY_ENV=dev node other/scripts/inject-secrets-simple.mjs",
+        "prebuild:prod": "KEY_ENV=prod node other/scripts/inject-secrets-simple.mjs",
+        
+        "dev": "npm run prebuild:dev && vite -c vite.config.ts --mode development",
+        "dev:firefox": "npm run prebuild:dev && vite -c vite.config.ts --mode firefox",
+        "dev:prod": "npm run prebuild:prod && vite -c vite.config.ts --mode production",
+
+        "build": "npm run clean && npm run prebuild:dev && vite build -c vite.config.ts --mode development",
+        "build:firefox": "npm run clean && npm run prebuild:prod && NODE_ENV=production vite build -c vite.config.ts --mode firefox",
+        "build:prod": "npm run clean && npm run prebuild:prod && NODE_ENV=production vite build -c vite.config.ts --mode production",
+
+        "package": "npm run build:prod && node scripts/package-with-version.mjs",
+        "package:firefox": "npm run build:firefox && node scripts/package-with-version.mjs firefox",
+        "package:source": "node scripts/package-source-with-version.mjs",
+        
+        "prebuild:community": "node scripts/prepare-community-credentials.mjs",
+        "dev:community": "npm run prebuild:community && vite -c vite.config.ts --mode community",
+        "build:community": "npm run clean && npm run prebuild:community && NODE_ENV=production vite build -c vite.config.ts --mode community",
+
+        "type-check": "tsc --noEmit",
+        "clean": "rm -rf dist",
+        "test": "vitest",
+        "format": "prettier --write \"src/**/*.ts\"",
+        "lint": "ESLINT_USE_FLAT_CONFIG=false eslint \"src/**/*.ts\""
+    },
+    "dependencies": {
+        "crypto-js": "4.2.0",
+        "franc-min": "6.2.0",
+        "openai": "6.15.0"
+    },
+    "devDependencies": {
+        "@types/chrome": "^0.0.268",
+        "@types/crypto-js": "4.2.2",
+        "@types/jsdom": "27.0.0",
+        "@types/node": "^20.12.7",
+        "@typescript-eslint/eslint-plugin": "8.46.2",
+        "@typescript-eslint/parser": "8.46.2",
+        "@vitest/ui": "4.0.3",
+        "eslint": "9.38.0",
+        "eslint-config-prettier": "10.1.8",
+        "eslint-plugin-prettier": "5.5.4",
+        "javascript-obfuscator": "4.1.1",
+        "jsdom": "27.0.1",
+        "prettier": "3.6.2",
+        "typescript": "^5.4.5",
+        "vite": "^5.2.10",
+        "vite-plugin-static-copy": "3.1.4",
+        "vite-plugin-web-extension": "4.5.0",
+        "vitest": "4.0.3"
+    },
+    "keywords": [
+        "chrome-extension",
+        "translation",
+        "ai",
+        "language",
+        "productivity"
+    ],
+    "author": ""
+}

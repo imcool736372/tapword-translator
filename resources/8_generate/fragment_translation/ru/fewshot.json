@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nRussian\n\n# Target Fragment\ndim corridor\n\n# Target Sentence\nWe walked down a dim corridor toward the archive room\n\n# Context\nThe building was old. <sentence>We walked down a <fragment>dim corridor</fragment> toward the archive room</sentence> Dust floated in the beam of a single lamp."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"тусклый коридор\",\"sentence_translation\":\"Мы прошли по тусклому коридору к архивной комнате\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nRussian\n\n# Target Fragment\nsteady snowfall\n\n# Target Sentence\nA steady snowfall covered the square overnight\n\n# Context\nBy morning the cars were white. <sentence>A <fragment>steady snowfall</fragment> covered the square overnight</sentence> Children rushed outside with sleds."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"равномерный снегопад\",\"sentence_translation\":\"Равномерный снегопад за ночь покрыл площадь\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nRussian\n\n# Target Fragment\nsharp turn\n\n# Target Sentence\nThe road made a sharp turn after the bridge\n\n# Context\nFog hung over the river. <sentence>The road made a <fragment>sharp turn</fragment> after the bridge</sentence> Warning signs reflected in the headlights."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"резкий поворот\",\"sentence_translation\":\"После моста дорога делала резкий поворот\"}"
+    }
+]

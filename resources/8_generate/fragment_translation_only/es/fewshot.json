@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nSpanish\n\n# Target Fragment\nworn notebook\n\n# Context\nHe carried it in his jacket pocket. <fragment>worn notebook</fragment> The cover was held together with tape."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"cuaderno gastado\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nSpanish\n\n# Target Fragment\nrain-soaked banner\n\n# Context\nVolunteers tried to dry it under a tent. <fragment>rain-soaked banner</fragment> Wind kept pushing the fabric."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"pancarta empapada por la lluvia\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nSpanish\n\n# Target Fragment\nfaint heartbeat\n\n# Context\nThe medic leaned closer with a stethoscope. <fragment>faint heartbeat</fragment> The room fell silent."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"latido débil\"}"
+    }
+]

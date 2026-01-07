@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nGerman\n\n# Target Word\nforge\n\n# Text Fragment\nThey will forge a stronger alliance\n\n# Paragraph Context\nAfter months of talks, <fragment>they will <target>forge</target> a stronger alliance.</fragment> Both sides finally trust each other."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"word_translation\":\"schmieden\",\"fragment_translation\":\"Nach Monaten der Gespräche werden sie ein stärkeres Bündnis schmieden\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nGerman\n\n# Target Word\nmeadow\n\n# Text Fragment\nCows grazed in the wide meadow beyond the barn\n\n# Paragraph Context\nThe sun was low over the hills. <fragment>Cows grazed in the wide <target>meadow</target> beyond the barn.</fragment> Bells rang softly as they moved."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"word_translation\":\"Wiese\",\"fragment_translation\":\"Hinter der Scheune weideten Kühe auf der weiten Wiese\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nGerman\n\n# Target Word\nripple\n\n# Dictionary Definition\nVerb: to form small waves or undulations\n\n# Text Fragment\nThe wind made small waves ripple across the lake\n\n# Paragraph Context\nThe evening was perfectly calm. <fragment>The wind made small waves <target>ripple</target> across the lake.</fragment> A few ducks drifted near the shore."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"word_translation\":\"kräuseln\",\"fragment_translation\":\"Der Wind ließ kleine Wellen über den See kräuseln\"}"
+    }
+]

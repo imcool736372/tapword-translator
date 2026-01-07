@@ -1,0 +1,66 @@
+[
+    {
+        "role": "user",
+        "content": "# Source Language\nChinese\n\n# Target Language\nEnglish\n\n# Target Word\n泉水\n\n# Text Fragment\n我在山里发现了一处天然泉水\n\n# Paragraph Context\n天气越来越暖和了。<fragment>我在山里发现了一处天然<target>泉水</target>。</fragment>花儿开始绽放。"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"word_translation\":\"spring\",\"fragment_translation\":\"I discovered a natural spring in the mountains\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nJapanese\n\n# Target Language\nEnglish\n\n# Target Word\nやめる\n\n# Text Fragment\nタバコをやめることにした\n\n# Paragraph Context\n医者が私の健康について警告した。<fragment>タバコを<target>やめる</target>ことにした。</fragment>それは私が今までにした最良の決断だった。"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"word_translation\":\"give up\",\"fragment_translation\":\"I decided to give up smoking\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nKorean\n\n# Target Language\nEnglish\n\n# Target Word\n달리고 있다\n\n# Dictionary Definition\n동사: 발을 사용하여 빠르게 움직이다; 달리기로 이동하다\n명사: 달리기 행위; 빠른 속도로 걸어서 이동하기\n\n# Text Fragment\n그녀는 공원에서 달리고 있다\n\n# Paragraph Context\n아침 공기는 신선하고 시원했다。<fragment>그녀는 공원에서 <target>달리고 있다</target>。</fragment>그녀의 개가 바로 뒤를 따른다。"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"word_translation\":\"running\",\"fragment_translation\":\"She is running in the park\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nSpanish\n\n# Target Language\nEnglish\n\n# Target Word\nmanantial\n\n# Text Fragment\nDescubrí un manantial natural en las montañas\n\n# Paragraph Context\nEl clima se estaba volviendo más cálido. <fragment>Descubrí un <target>manantial</target> natural en las montañas.</fragment> Las flores comenzaban a florecer."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"word_translation\":\"spring\",\"fragment_translation\":\"I discovered a natural spring in the mountains\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nFrench\n\n# Target Language\nEnglish\n\n# Target Word\nabandonner\n\n# Text Fragment\nJ'ai décidé d'abandonner de fumer\n\n# Paragraph Context\nMon médecin m'a averti de ma santé. <fragment>J'ai décidé d'<target>abandonner</target> de fumer.</fragment> C'était la meilleure décision que j'aie jamais prise."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"word_translation\":\"give up\",\"fragment_translation\":\"I decided to give up smoking\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nGerman\n\n# Target Language\nEnglish\n\n# Target Word\nläuft\n\n# Dictionary Definition\nVerb: sich schnell mit den Füßen bewegen; zu Fuß im Laufschritt reisen\nSubstantiv: das Laufen; zu Fuß in schnellem Tempo reisen\n\n# Text Fragment\nSie läuft im Park\n\n# Paragraph Context\nDie Morgenluft war frisch und kühl. <fragment>Sie <target>läuft</target> im Park.</fragment> Ihr Hund folgt dicht hinter ihr."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"word_translation\":\"running\",\"fragment_translation\":\"She is running in the park\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nRussian\n\n# Target Language\nEnglish\n\n# Target Word\nисточник\n\n# Text Fragment\nЯ обнаружил природный источник в горах\n\n# Paragraph Context\nПогода становилась теплее. <fragment>Я обнаружил природный <target>источник</target> в горах.</fragment> Цветы начинали распускаться."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"word_translation\":\"spring\",\"fragment_translation\":\"I discovered a natural spring in the mountains\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nChinese\n\n# Target Language\nEnglish\n\n# Target Word\n走\n\n# Text Fragment\n他慢慢地走回家\n\n# Paragraph Context\n天黑了。<fragment>他慢慢地<target>走</target>回家。</fragment>路上没有人。"
+    },
+    {
+        "role": "assistant",
+        "content": "{\"word_translation\":\"walked\",\"fragment_translation\":\"He walked home slowly\"}"
+    }
+]

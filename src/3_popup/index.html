@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" class="loading">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n-key="popup.title">TapWord</title>
+</head>
+
+<body>
+  <div class="popup-container">
+    <div class="popup-content">
+      <div class="popup-header">
+        <h1 class="popup-title">
+          <img src="/icons/icon-48.png" alt="" class="popup-icon">
+          <span class="popup-title-wrapper">
+            <span data-i18n-key="popup.title">TapWord</span>
+            <span class="popup-subtitle" id="communitySubtitle" data-i18n-key="popup.communityEdition" style="display: none;">Community Edition</span>
+          </span>
+        </h1>
+      </div>
+
+      <div class="settings-list">
+        <section class="section-card section-master">
+          <div class="section-body">
+            <div class="setting-item setting-item-master">
+              <div class="setting-info">
+                <label class="setting-label master-label" for="enableTapWord">
+                  <span class="master-label-text" data-i18n-key="popup.enableTapWord.label">Enable TapWord</span>
+                  <span class="help-icon" data-i18n-key="popup.enableTapWord.helper" data-i18n-attr="data-tooltip">?</span>
+                </label>
+              </div>
+              <label class="toggle-switch toggle-switch-master">
+                <input type="checkbox" id="enableTapWord" data-setting="enableTapWord">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card section-translate">
+          <div class="section-floating-title" data-title="Translation Settings" data-i18n-key="popup.section.translate"
+            data-i18n-attr="data-title"></div>
+          <div class="section-body">
+            <div class="setting-item">
+              <div class="setting-info">
+                <label class="setting-label" for="targetLanguage" data-i18n-key="popup.targetLanguage.label">Target
+                  Language</label>
+              </div>
+              <div class="setting-control">
+                <select id="targetLanguage" data-setting="targetLanguage" class="language-select">
+                  <option value="en">English</option>
+                  <option value="zh">中文</option>
+                  <option value="es">Español</option>
+                  <option value="ja">日本語</option>
+                  <option value="fr">Français</option>
+                  <option value="de">Deutsch</option>
+                  <option value="ko">한국어</option>
+                  <option value="ru">Русский</option>
+                </select>
+              </div>
+            </div>
+            <div class="setting-item">
+              <div class="setting-info">
+                <label class="setting-label" for="showIcon">
+                  <span data-i18n-key="popup.showIcon.label">Show Translation Icon</span>
+                  <span class="help-icon" data-i18n-key="popup.showIcon.tooltip"
+                    data-i18n-attr="data-tooltip">?</span>
+                </label>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="showIcon" data-setting="showIcon">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="setting-item">
+              <div class="setting-info">
+                <label class="setting-label" for="doubleClickTranslate"
+                  data-i18n-key="popup.doubleClickTranslate.label">Double-click to Translate</label>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="doubleClickTranslate" data-setting="doubleClickTranslate">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card section-display">
+          <div class="section-floating-title" data-title="Display Settings" data-i18n-key="popup.section.text"
+            data-i18n-attr="data-title"></div>
+          <div class="section-body">
+            <div class="setting-item">
+              <div class="setting-info">
+                <label class="setting-label" for="translationFontSizePreset"
+                  data-i18n-key="popup.translationFontSize.label">Translation Font Size</label>
+              </div>
+              <div class="setting-control">
+                <select id="translationFontSizePreset" data-setting="translationFontSizePreset" class="language-select">
+                  <option value="small" data-i18n-key="popup.translationFontSize.small">Small</option>
+                  <option value="medium" data-i18n-key="popup.translationFontSize.medium">Medium</option>
+                  <option value="large" data-i18n-key="popup.translationFontSize.large">Large</option>
+                  <option value="extraLarge" data-i18n-key="popup.translationFontSize.extraLarge">Extra Large</option>
+                </select>
+              </div>
+            </div>
+            <div class="setting-item">
+              <div class="setting-info">
+                <label class="setting-label" for="autoAdjustHeight">
+                  <span data-i18n-key="popup.autoAdjustHeight.label">Auto-adjust Line Height</span>
+                  <span class="help-icon" data-i18n-key="popup.autoAdjustHeight.tooltip"
+                    data-i18n-attr="data-tooltip">?</span>
+                </label>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="autoAdjustHeight" data-setting="autoAdjustHeight">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-card section-audio">
+          <div class="section-floating-title" data-title="Audio Settings" data-i18n-key="popup.section.audio"
+            data-i18n-attr="data-title"></div>
+          <div class="section-body">
+            <div class="setting-item">
+              <div class="setting-info">
+                <label class="setting-label" for="autoPlayAudio" data-i18n-key="popup.autoPlayAudio.label">Auto-play Word
+                  Pronunciation</label>
+              </div>
+              <label class="toggle-switch">
+                <input type="checkbox" id="autoPlayAudio" data-setting="autoPlayAudio">
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="popup-footer">
+      <button id="settingsButton" class="settings-button-footer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+          <path d="M19.14,12.94c0.04-0.3,0.06-0.61,0.06-0.94c0-0.32-0.02-0.64-0.07-0.94l2.03-1.58c0.18-0.14,0.23-0.41,0.12-0.61 l-1.92-3.32c-0.12-0.22-0.37-0.29-0.59-0.22l-2.39,0.96c-0.5-0.38-1.03-0.7-1.62-0.94L14.4,2.25 C14.38,2.01,14.17,1.82,13.92,1.82H9.92C9.69,1.82,9.48,2.01,9.46,2.25L9.1,4.61C8.51,4.85,7.98,5.17,7.48,5.55L5.09,4.59 c-0.22-0.08-0.47,0-0.59,0.22L2.58,8.13C2.47,8.33,2.52,8.6,2.7,8.74l2.03,1.58C4.68,10.64,4.66,10.96,4.66,11.28 c0,0.32,0.02,0.64,0.07,0.94l-2.03,1.58c-0.18,0.14-0.23,0.41-0.12,0.61l1.92,3.32c0.12,0.22,0.37,0.29,0.59,0.22l2.39-0.96 c0.5,0.38,1.03,0.7,1.62,0.94l0.36,2.36c0.02,0.24,0.23,0.43,0.48,0.43h4c0.25,0,0.46-0.19,0.48-0.43l0.36-2.36 c0.59-0.24,1.12-0.56,1.62-0.94l2.39,0.96c0.22,0.08,0.47,0,0.59-0.22l1.92-3.32c0.12-0.22,0.07-0.47-0.12-0.61L19.14,12.94z M11.92,15.16c-1.98,0-3.58-1.6-3.58-3.58s1.6-3.58,3.58-3.58s3.58,1.6,3.58,3.58S13.9,15.16,11.92,15.16z"></path>
+        </svg>
+        <span data-i18n-key="popup.settingsButton">Settings</span>
+      </button>
+      <span id="versionDisplay" class="version-display"></span>
+    </div>
+  </div>
+
+  <script type="module" src="/src/3_popup/index.ts"></script>
+</body>
+
+</html>

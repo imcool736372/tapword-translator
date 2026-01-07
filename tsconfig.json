@@ -1,0 +1,56 @@
+{
+    "compilerOptions": {
+        "target": "ES2020",
+        "module": "ESNext",
+        "lib": [
+            "ES2020",
+            "DOM"
+        ],
+        "moduleResolution": "bundler",
+        "resolveJsonModule": true,
+        "allowJs": true,
+        "checkJs": false,
+        "outDir": "./dist",
+        /* Type Checking */
+        "strict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUncheckedIndexedAccess": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        /* Path Aliases */
+        "baseUrl": ".",
+        "paths": {
+            "@/*": [
+                "src/*"
+            ],
+            "@utils/*": [
+                "src/0_common/utils/*"
+            ],
+            "@types/*": [
+                "src/0_common/types/*"
+            ],
+            "@constants/*": [
+                "src/0_common/constants/*"
+            ]
+        },
+        /* Chrome Extension Types */
+        "types": [
+            "chrome",
+            "node"
+        ]
+    },
+    "include": [
+        "src/**/*",
+        "vite.config.ts"
+    ],
+    "exclude": [
+        "node_modules",
+        "dist",
+        "tests",
+        "src/5_backend/config/credentials.ts" // Generated & obfuscated file excluded from type-check
+    ]
+}

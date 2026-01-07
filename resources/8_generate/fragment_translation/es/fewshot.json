@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nSpanish\n\n# Target Fragment\nhollow echo\n\n# Target Sentence\nThe hall carried a hollow echo after the speech\n\n# Context\nPeople were leaving slowly. <sentence>The hall carried a <fragment>hollow echo</fragment> after the speech</sentence> Chairs scraped against the floor."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"eco hueco\",\"sentence_translation\":\"El salón tenía un eco hueco después del discurso\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nSpanish\n\n# Target Fragment\ngentle slope\n\n# Target Sentence\nThe trail followed a gentle slope toward the lake\n\n# Context\nWildflowers lined the path. <sentence>The trail followed a <fragment>gentle slope</fragment> toward the lake</sentence> The air smelled of pine and earth."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"pendiente suave\",\"sentence_translation\":\"El sendero seguía una pendiente suave hacia el lago\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nSpanish\n\n# Target Fragment\nbrief silence\n\n# Target Sentence\nA brief silence settled before the applause began\n\n# Context\nThe performance ended with a single sustained note. <sentence>A <fragment>brief silence</fragment> settled before the applause began</sentence> Everyone held their breath."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"breve silencio\",\"sentence_translation\":\"Se hizo un breve silencio antes de que empezaran los aplausos\"}"
+    }
+]

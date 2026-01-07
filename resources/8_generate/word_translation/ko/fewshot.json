@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nKorean\n\n# Target Word\nharvest\n\n# Text Fragment\nThe farmers will harvest the rice next week\n\n# Paragraph Context\nThe fields were turning gold. <fragment>The farmers will <target>harvest</target> the rice next week.</fragment> Their families are already planning a celebration."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"word_translation\":\"수확하다\",\"fragment_translation\":\"농부들은 다음 주에 쌀을 수확할 것이다\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nKorean\n\n# Target Word\nglow\n\n# Dictionary Definition\nVerb: to shine with a soft light without flames\n\n# Text Fragment\nThe embers still glow softly in the fireplace\n\n# Paragraph Context\nNight had fallen. <fragment>The embers still <target>glow</target> softly in the fireplace.</fragment> The cabin smelled of pine."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"word_translation\":\"빛나다\",\"fragment_translation\":\"벽난로 속의 잔불이 아직도 은은하게 빛난다\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nKorean\n\n# Target Word\ndetour\n\n# Text Fragment\nWe took a detour to avoid the construction zone\n\n# Paragraph Context\nTraffic reports were grim. <fragment>We took a <target>detour</target> to avoid the construction zone.</fragment> It added ten minutes to the trip."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"word_translation\":\"우회로\",\"fragment_translation\":\"공사 구역을 피하기 위해 우리는 우회로를 택했다\"}"
+    }
+]

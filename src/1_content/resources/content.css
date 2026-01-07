@@ -1,0 +1,125 @@
+/**
+ * Content Styles - Injected into web pages
+ * 
+ * Provides styling for:
+ * 1. Translation trigger icon that appears near selected text
+ * 2. Highlighted text (underline style for translated segments)
+ * 3. Translation tooltip/card floating display
+ * 4. Positioning and z-index management to avoid layout conflicts
+ * 5. Animation effects for smooth appearance/disappearance
+ * 6. Responsive styles for different screen sizes
+ * 7. Dark mode compatibility
+ * 
+ * Key CSS classes:
+ * - .ai-translator-icon: The clickable icon trigger
+ * - .ai-translator-anchor: Wrapper for highlighted original text
+ * - .ai-translator-tooltip: Floating card with translation result
+ * - .ai-translator-loading: Loading state indicator
+ * 
+ * Note: Modal styles are now in modal.css
+ */
+
+/* Translation Icon - Appears next to selected text */
+.ai-translator-icon {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    z-index: 999999;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    pointer-events: auto;
+    user-select: none;
+    -webkit-user-select: none;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
+}
+
+.ai-translator-icon.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.ai-translator-icon:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 4px 12px rgba(79, 70, 229, 0.3));
+}
+
+.ai-translator-icon:active {
+    transform: scale(0.95);
+}
+
+.ai-translator-icon svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Highlighted translated text */
+.ai-translator-anchor {
+    position: relative;
+    text-decoration: underline;
+    text-decoration-color: var(--modal-accent-color);
+    /* Default for fragments */
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 2px;
+    cursor: pointer;
+}
+
+/* Specific underline color for word translations */
+.ai-translator-anchor--word {
+    text-decoration-color: var(--modal-blue-accent-color);
+    /* Blue for words */
+}
+
+/* Translation tooltip/card - subtitle style */
+.ai-translator-tooltip {
+    position: absolute;
+    /* Positioned dynamically via JS relative to chosen line rect */
+    z-index: 999998;
+    margin-top: 0px;
+    padding: 0;
+    background: transparent;
+    color: inherit;
+    /* border-radius: 4px; */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    /* font-size is set dynamically via JavaScript based on original text */
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    /* JS applies manual ellipsis ('...') when needed */
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.ai-translator-tooltip.visible {
+    opacity: 0.8;
+}
+
+/* Error state for tooltip - orange-red color */
+.ai-translator-tooltip.error {
+    color: #FF6B35;
+}
+
+/* No fade mask; we use manual JS ellipsis instead */
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    /* Future dark mode styles can be added here */
+}
+
+/* Prevent selection conflicts */
+.ai-translator-icon *,
+.ai-translator-tooltip * {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.ai-translator-tooltip {
+    user-select: text;
+    -webkit-user-select: text;
+}

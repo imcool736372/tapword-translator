@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nGerman\n\n# Target Fragment\nfogged glasses\n\n# Context\nHe stepped in from the cold. <fragment>fogged glasses</fragment> The café smelled of fresh bread."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"beschlagene Brille\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nGerman\n\n# Target Fragment\nfolded blueprint\n\n# Context\nEngineers gathered around the table. <fragment>folded blueprint</fragment> Coffee cups crowded the edges."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"gefalteter Bauplan\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nGerman\n\n# Target Fragment\nsoft applause\n\n# Context\nThe recital ended quietly. <fragment>soft applause</fragment> Parents stood along the back wall."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"leiser Applaus\"}"
+    }
+]

@@ -1,0 +1,10 @@
+{
+    "extName": {
+        "message": "TapWord Translator - Translate like Taking Notes",
+        "description": "The name of the extension displayed in Chrome"
+    },
+    "extDescription": {
+        "message": "Embeds translations below the original text for an immersive, bilingual subtitle-like reading experience.",
+        "description": "The description of the extension displayed in Chrome Web Store"
+    }
+}

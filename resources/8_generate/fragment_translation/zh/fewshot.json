@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nChinese\n\n# Target Fragment\ncoastal village\n\n# Target Sentence\nThey settled in a small coastal village near the bay\n\n# Context\nThe sea was calm that summer. <sentence>They settled in a small <fragment>coastal village</fragment> near the bay</sentence> Fishing boats left at dawn and returned at dusk."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"海边村庄\",\"sentence_translation\":\"他们在海湾附近的一个海边村庄定居下来\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nChinese\n\n# Target Fragment\nsubtle glow\n\n# Target Sentence\nA subtle glow appeared on the horizon before dawn\n\n# Context\nIt was the longest night of winter. <sentence>A <fragment>subtle glow</fragment> appeared on the horizon before dawn</sentence> Everyone waited quietly for first light."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"微弱的光芒\",\"sentence_translation\":\"黎明前地平线上出现了一道微弱的光芒\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nChinese\n\n# Target Fragment\npaused mid-sentence\n\n# Target Sentence\nHe paused mid-sentence when the door creaked open\n\n# Context\nThe meeting room was silent. <sentence>He <fragment>paused mid-sentence</fragment> when the door creaked open</sentence> Everyone turned to see who had arrived."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"说到一半停顿\",\"sentence_translation\":\"当门吱呀一声被推开时，他说到一半停顿了\"}"
+    }
+]

@@ -1,0 +1,685 @@
+/**
+ * Translation Modal Styles - New Design
+ * 
+ * Based on Figma design reference with dynamic sizing support.
+ * Styles for the detailed translation modal popup.
+ */
+
+/* CSS Variables */
+:root {
+    --modal-primary-color: rgba(30, 30, 30, 1);
+    --modal-primary-80: rgba(30, 30, 30, 0.8);
+    --modal-accent-color: #E59E47;
+    --modal-blue-accent-color: #1F7FDB;
+    --modal-bg-color: rgba(252, 250, 242, 1);
+    --modal-section-bg: #f9f9f7;
+    --modal-divider-color: #efefefe6;
+}
+
+/* ============================================================================
+   Modal Container
+   ============================================================================ */
+
+/* Modal container - floating popup */
+.ai-translator-modal {
+    position: absolute;
+    background: linear-gradient(0deg,
+            rgba(255, 255, 255, 1) 0%,
+            rgba(255, 255, 255, 1) 100%),
+        linear-gradient(0deg,
+            var(--modal-bg-color) 0%,
+            var(--modal-bg-color) 100%);
+    background-color: var(--modal-bg-color);
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(0, 0, 0, 0.05);
+    width: 420px;
+    max-width: calc(100vw - 20px);
+    max-height: min(400px, 60vh);
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    transform: scale(0.95);
+    opacity: 0;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+    padding: 0;
+    z-index: 1000000;
+}
+
+.ai-translator-modal.visible {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Close button */
+.ai-translator-modal-close {
+    width: 28px;
+    /* Larger than other icons */
+    height: 28px;
+    /* Larger than other icons */
+    font-size: 28px;
+    /* Larger 'x' symbol */
+    line-height: 1;
+    color: #6B7280;
+    margin-left: 12px;
+    /* Creates visual separation */
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    border: 2px solid #6B7280;
+}
+
+.ai-translator-modal-close:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: #1F2937;
+    border-color: #1F2937;
+}
+
+.ai-translator-modal-close:active {
+    transform: scale(0.95);
+}
+
+/* Modal content wrapper */
+.ai-translator-modal-content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ============================================================================
+   Word Section (Top Section)
+   ============================================================================ */
+
+.ai-translator-modal-view {
+    padding: 12px 20px 5px;
+    display: flex;
+    flex-direction: column;
+    /* Make the top area fixed within the scrolling modal */
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    /* Ensure content scrolling underneath isn't visible through */
+    background-color: #ffffff;
+    /* Use default white for unified header background */
+}
+
+/* Combined Top Row: Word + Phonetic + Action Buttons */
+.ai-translator-modal-top-row {
+    display: flex;
+    align-items: flex-start;
+    /* Align all items to the top */
+    justify-content: space-between;
+    gap: 16px;
+}
+
+/* Left Group: Word + Phonetic closely together */
+.ai-translator-modal-left-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+.ai-translator-modal-word-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex-shrink: 1;
+    min-width: 0;
+    margin-right: 0;
+    /* Align items to start so word stays left-aligned */
+    align-items: flex-start;
+}
+
+.ai-translator-modal-word {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 600;
+    color: var(--modal-primary-color);
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: 19px;
+    word-break: break-word;
+    /* Use native CSS text-decoration for perfect underline alignment */
+    text-decoration: underline;
+    text-decoration-color: var(--modal-accent-color);
+    /* Default for fragments */
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+    /* display inline to make underline fit text width exactly */
+    display: inline;
+}
+
+/* Specific underline color for word translations in the modal */
+.ai-translator-modal.translation-type--word .ai-translator-modal-word {
+    text-decoration-color: var(--modal-blue-accent-color);
+    /* Blue for words */
+}
+
+.ai-translator-modal-word-translation {
+    color: var(--modal-primary-80);
+    font-size: 13px;
+    font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 13px;
+    margin-top: 4px;
+    word-break: break-word;
+    /* Center-align when shorter than word, naturally left-aligns when longer */
+    align-self: center;
+    /* Allow it to grow up to the word section width */
+    max-width: 100%;
+    text-align: center;
+}
+
+/* ============================================================================
+   Phonetic and Action Buttons Row
+   ============================================================================ */
+
+/* Phonetic and Speaker Button Group (close to word, aligned with word baseline) */
+.ai-translator-modal-phonetic-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+    margin-left: 0;
+    /* Align with the word's baseline by offsetting for word's line-height */
+    margin-top: 0px;
+}
+
+.ai-translator-modal-phonetic {
+    font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 400;
+    color: #999999;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 16px;
+}
+
+/* Action Buttons Container (right side, bottom-aligned) */
+.ai-translator-modal-action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 2px;
+}
+
+.ai-translator-modal-action-btn {
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    color: #666666;
+}
+
+.ai-translator-modal-action-btn:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--modal-primary-color);
+}
+
+.ai-translator-modal-action-btn:active {
+    transform: scale(0.95);
+}
+
+.ai-translator-modal-action-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Specific button sizing and hover effects */
+.ai-translator-speak-btn,
+.ai-translator-refresh-btn,
+.ai-translator-delete-btn {
+    width: 24px;
+    height: 24px;
+}
+
+.ai-translator-speak-btn:hover {
+    color: var(--modal-accent-color);
+}
+
+.ai-translator-refresh-btn:hover {
+    color: #4CAF50;
+}
+
+.ai-translator-delete-btn:hover {
+    color: #EF4444;
+}
+
+/* Disabled button styles */
+.ai-translator-modal-action-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.ai-translator-modal-action-btn:disabled:hover {
+    background: transparent;
+    color: #666666;
+}
+
+/* ============================================================================
+   Divider
+   ============================================================================ */
+
+.ai-translator-modal-divider {
+    /* Use border-top for robust hairline that won't collapse in flex + scrolling */
+    height: 0;
+    width: calc(100% - 38px);
+    align-self: center;
+    margin: 5px 0 8px;
+    border-top: 1px solid var(--modal-divider-color);
+    box-sizing: border-box;
+    flex: 0 0 auto;
+}
+
+/* ============================================================================
+   Original Sentence Section
+   ============================================================================ */
+
+.ai-translator-modal-sentence-section {
+    padding: 0 16px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.ai-translator-modal-section-label {
+    color: rgba(30, 30, 30, 0.6);
+    font-size: 10px;
+    font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 14px;
+    padding-left: 1px;
+}
+
+.ai-translator-modal-sentence-container {
+    background-color: var(--modal-section-bg);
+    border-radius: 4px;
+    padding: 5px 11px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-height: 40px;
+}
+
+.ai-translator-modal-sentence-original {
+    margin: 0;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 400;
+    color: var(--modal-primary-color);
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 20px;
+    word-break: break-word;
+}
+
+/* Highlighted word in original sentence */
+.ai-translator-modal-word-highlight {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 600;
+    color: var(--modal-blue-accent-color);
+}
+
+/* Fragment highlight color should match fragment underline color (orange) */
+.ai-translator-modal.translation-type--fragment .ai-translator-modal-word-highlight {
+    color: var(--modal-accent-color);
+}
+
+.ai-translator-modal-sentence-translation {
+    margin: 0;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 400;
+    color: var(--modal-primary-80);
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 18px;
+    word-break: break-word;
+}
+
+/* Header for sections like 'Original Sentence' */
+.ai-translator-modal-section-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* Short distance between label and button */
+}
+
+.ai-translator-modal-section-header .ai-translator-speak-original-btn {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    /* margin-left: auto; */
+    /* Pushes button to the far right */
+}
+
+/* Update available label - positioned at far right */
+.ai-translator-modal-update-label {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 14px;
+    color: rgba(255, 102, 0, 1);
+    /* Orange color matching popup's .update-available */
+    margin-left: auto;
+    /* Push to far right */
+    flex-shrink: 0;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    /* Soft bounce animation (scheme 3) */
+    animation: soft-bounce 2.8s cubic-bezier(.45, .05, .55, .95) infinite;
+}
+
+.ai-translator-modal-update-label:hover {
+    opacity: 0.85;
+}
+
+.ai-translator-modal-update-label:active {
+    opacity: 0.7;
+}
+
+/* Keyframes: gentle vertical scale + slight fade for subtle attention */
+@keyframes soft-bounce {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.06);
+        opacity: 0.85;
+    }
+}
+
+
+/* ============================================================================
+   Dictionary Section
+   ============================================================================ */
+
+.ai-translator-modal-dictionary-section {
+    padding: 0 16px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.ai-translator-modal-dictionary-container {
+    background-color: var(--modal-section-bg);
+    border-radius: 4px;
+    padding: 7px 10px;
+    overflow: hidden;
+    min-height: 40px;
+}
+
+/* Lemma row - displays lemma, phonetic, and speak button */
+.ai-translator-modal-lemma-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--modal-divider-color);
+}
+
+/* Hide lemma row when lemma text is empty */
+.ai-translator-modal-lemma-row:has(.ai-translator-modal-lemma-text:empty) {
+    display: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.ai-translator-modal-lemma-text {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 600;
+    color: var(--modal-primary-color);
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 18px;
+}
+
+/* Hide phonetic when empty */
+.ai-translator-modal-lemma-phonetic:empty {
+    display: none;
+}
+
+.ai-translator-modal-lemma-phonetic {
+    font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 400;
+    color: #999999;
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 16px;
+}
+
+.ai-translator-speak-lemma-btn {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.ai-translator-speak-lemma-btn:hover {
+    color: var(--modal-accent-color);
+}
+
+.ai-translator-modal-dictionary-content {
+    font-family: "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 400;
+    color: var(--modal-primary-color);
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 18px;
+    word-break: break-word;
+    white-space: pre-wrap;
+}
+
+/* ============================================================================
+   Fragment Section (for fragment translations)
+   ============================================================================ */
+
+.ai-translator-modal-fragment-section {
+    padding: 0 16px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.ai-translator-modal-fragment-container {
+    background-color: var(--modal-section-bg);
+    border-radius: 4px;
+    padding: 5px 11px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-height: 40px;
+}
+
+.ai-translator-modal-fragment-original {
+    margin: 0;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 400;
+    color: var(--modal-primary-color);
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 20px;
+    word-break: break-word;
+}
+
+.ai-translator-modal-fragment-translation {
+    margin: 0;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 400;
+    color: var(--modal-primary-80);
+    font-size: 12px;
+    letter-spacing: 0;
+    line-height: 18px;
+    word-break: break-word;
+}
+
+/* ============================================================================
+   Loading State
+   ============================================================================ */
+
+.ai-translator-loading {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 2px solid #E5E7EB;
+    border-top-color: var(--modal-accent-color);
+    border-radius: 50%;
+    animation: ai-translator-spin 0.6s linear infinite;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+
+@keyframes ai-translator-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ============================================================================
+   Error State
+   ============================================================================ */
+
+/* Error message with icon for word translations */
+.ai-translator-modal-error-message {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #FF6B35;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.ai-translator-modal-error-message .ai-translator-error-icon {
+    flex-shrink: 0;
+    width: 12px;
+    height: 12px;
+}
+
+.ai-translator-modal-error-message span {
+    flex: 0 1 auto;
+}
+
+/* Error message with icon for fragment translations */
+.ai-translator-modal-fragment-error {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #FF6B35;
+    font-size: 12px;
+}
+
+.ai-translator-error-icon {
+    flex-shrink: 0;
+    width: 12px;
+    height: 12px;
+}
+
+.ai-translator-modal-fragment-error span {
+    flex: 1;
+}
+
+/* ============================================================================
+   Scrollbar Styling
+   ============================================================================ */
+
+.ai-translator-modal::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ai-translator-modal::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.ai-translator-modal::-webkit-scrollbar-thumb {
+    background: #D1D5DB;
+    border-radius: 3px;
+}
+
+.ai-translator-modal::-webkit-scrollbar-thumb:hover {
+    background: #9CA3AF;
+}
+
+/* ============================================================================
+   Responsive Design
+   ============================================================================ */
+
+@media (max-width: 640px) {
+    .ai-translator-modal {
+        width: 95%;
+        max-width: 95%;
+    }
+
+    .ai-translator-modal-view {
+        padding: 12px 16px 4px;
+    }
+
+    .ai-translator-modal-sentence-section,
+    .ai-translator-modal-dictionary-section {
+        padding: 0 12px 12px;
+    }
+}
+
+/* ============================================================================
+   Toast Notification (inside Shadow DOM)
+   ============================================================================ */
+
+/* Toast notification - floats above modal content */
+.ai-translator-toast {
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-60px);
+    z-index: 10;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    border-radius: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+    max-width: calc(100% - 40px);
+    text-align: center;
+    white-space: nowrap;
+}
+
+.ai-translator-toast.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Toast variants with pill/capsule shape */
+.ai-translator-toast--error {
+    background: linear-gradient(135deg, rgba(255, 59, 48, 0.95) 0%, rgba(255, 45, 85, 0.95) 100%);
+}
+
+.ai-translator-toast--success {
+    background: linear-gradient(135deg, rgba(52, 199, 89, 0.95) 0%, rgba(48, 209, 88, 0.95) 100%);
+}
+
+.ai-translator-toast--info {
+    background: linear-gradient(135deg, rgba(0, 122, 255, 0.95) 0%, rgba(10, 132, 255, 0.95) 100%);
+}

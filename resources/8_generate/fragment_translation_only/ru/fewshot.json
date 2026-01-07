@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nRussian\n\n# Target Fragment\nquiet hallway\n\n# Context\nMost offices were empty. <fragment>quiet hallway</fragment> A clock ticked loudly near the stairs."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"тихий коридор\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nRussian\n\n# Target Fragment\nweathered bench\n\n# Context\nIt sat under a tall oak tree. <fragment>weathered bench</fragment> Carved initials covered the surface."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"потрёпанная скамейка\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nRussian\n\n# Target Fragment\ncrisp envelope\n\n# Context\nThe letter bore an unfamiliar seal. <fragment>crisp envelope</fragment> She turned it over before opening."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"хрустящий конверт\"}"
+    }
+]

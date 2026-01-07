@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nKorean\n\n# Target Fragment\ndripping faucet\n\n# Context\nThe kitchen was silent except for the sound. <fragment>dripping faucet</fragment> A single bulb flickered overhead."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"물방울 떨어지는 수도꼭지\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nKorean\n\n# Target Fragment\nstacked crates\n\n# Context\nDelivery had arrived early. <fragment>stacked crates</fragment> Labels showed destinations across the city."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"겹겹이 쌓인 상자들\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nKorean\n\n# Target Fragment\nquiet determination\n\n# Context\nShe laced her shoes before dawn. <fragment>quiet determination</fragment> The marathon would start in an hour."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"조용한 결의\"}"
+    }
+]

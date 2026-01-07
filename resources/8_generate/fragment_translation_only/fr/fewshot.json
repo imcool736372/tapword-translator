@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nFrench\n\n# Target Fragment\ncrumpled map\n\n# Context\nHe unfolded it on the hood of the car. <fragment>crumpled map</fragment> Wind threatened to tear the corners."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"carte froissée\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nFrench\n\n# Target Fragment\ndim lantern\n\n# Context\nThe campsite was quiet. <fragment>dim lantern</fragment> Sparks rose from the dying fire."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"lanterne faible\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nFrench\n\n# Target Fragment\nhurried signature\n\n# Context\nShe signed the form at the counter. <fragment>hurried signature</fragment> People were lining up behind her."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"signature précipitée\"}"
+    }
+]

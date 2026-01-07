@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nGerman\n\n# Target Fragment\nnarrow alley\n\n# Target Sentence\nThey disappeared into a narrow alley behind the market\n\n# Context\nVendors were closing their stalls. <sentence>They disappeared into a <fragment>narrow alley</fragment> behind the market</sentence> Rain began to fall lightly."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"enge Gasse\",\"sentence_translation\":\"Sie verschwanden in eine enge Gasse hinter dem Markt\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nGerman\n\n# Target Fragment\nmuted colors\n\n# Target Sentence\nThe painting used muted colors to convey calm\n\n# Context\nIt depicted a quiet lake at dawn. <sentence>The painting used <fragment>muted colors</fragment> to convey calm</sentence> The frame was simple oak."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"gedämpfte Farben\",\"sentence_translation\":\"Das Gemälde nutzte gedämpfte Farben, um Ruhe zu vermitteln\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nGerman\n\n# Target Fragment\nsoft murmur\n\n# Target Sentence\nA soft murmur spread through the audience\n\n# Context\nThe presenter paused to sip water. <sentence>A <fragment>soft murmur</fragment> spread through the audience</sentence> Slides changed slowly on the screen."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"leises Murmeln\",\"sentence_translation\":\"Ein leises Murmeln ging durch das Publikum\"}"
+    }
+]

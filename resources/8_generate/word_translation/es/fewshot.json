@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nSpanish\n\n# Target Word\nwhisper\n\n# Text Fragment\nShe began to whisper during the meeting\n\n# Paragraph Context\nThe room grew quiet. <fragment>She began to <target>whisper</target> during the meeting.</fragment> Only her neighbor heard her."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"word_translation\":\"susurrar\",\"fragment_translation\":\"Ella empezó a susurrar durante la reunión\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nSpanish\n\n# Target Word\nsturdy\n\n# Dictionary Definition\nAdjective: firmly built; not easily bent or damaged\n\n# Text Fragment\nHe built a sturdy table for the workshop\n\n# Paragraph Context\nHe had gathered oak planks all week. <fragment>He built a <target>sturdy</target> table for the workshop.</fragment> It would hold heavy tools without wobbling."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"word_translation\":\"resistente\",\"fragment_translation\":\"Construyó una mesa resistente para el taller\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nSpanish\n\n# Target Word\ndetour\n\n# Text Fragment\nTraffic forced us to take a detour through side streets\n\n# Paragraph Context\nThe highway was jammed. <fragment>Traffic forced us to take a <target>detour</target> through side streets.</fragment> We still arrived a few minutes late."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"word_translation\":\"desvío\",\"fragment_translation\":\"El tráfico nos obligó a tomar un desvío por calles secundarias\"}"
+    }
+]

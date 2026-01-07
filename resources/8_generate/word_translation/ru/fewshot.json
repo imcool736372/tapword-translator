@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nRussian\n\n# Target Word\nwhisper\n\n# Text Fragment\nShe leaned in to whisper a secret\n\n# Paragraph Context\nThe corridor was empty. <fragment>She leaned in to <target>whisper</target> a secret.</fragment> His eyes widened at once."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"word_translation\":\"шептать\",\"fragment_translation\":\"Она наклонилась, чтобы прошептать секрет\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nRussian\n\n# Target Word\nshelter\n\n# Dictionary Definition\nNoun: a place that provides cover or protection from weather or danger\n\n# Text Fragment\nThe hikers found a small shelter before the rain began\n\n# Paragraph Context\nThunder rumbled in the distance. <fragment>The hikers found a small <target>shelter</target> before the rain began.</fragment> They waited there until the sky cleared."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"word_translation\":\"убежище\",\"fragment_translation\":\"Путешественники нашли маленькое убежище перед началом дождя\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nRussian\n\n# Target Word\nglow\n\n# Text Fragment\nThe horizon began to glow with the first light\n\n# Paragraph Context\nNight was ending. <fragment>The horizon began to <target>glow</target> with the first light.</fragment> Birds started to sing from the trees."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"word_translation\":\"светиться\",\"fragment_translation\":\"Горизонт начал светиться первым светом\"}"
+    }
+]

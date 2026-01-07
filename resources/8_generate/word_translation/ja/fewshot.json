@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nJapanese\n\n# Target Word\nglacier\n\n# Text Fragment\nThe ancient glacier carved the valley over centuries\n\n# Paragraph Context\nThe valley was deep and narrow. <fragment>The ancient <target>glacier</target> carved the valley over centuries.</fragment> Streams now flow where the ice once stood."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"word_translation\":\"氷河\",\"fragment_translation\":\"古代の氷河が何世紀にもわたりその谷を刻んだ\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nJapanese\n\n# Target Word\nhesitate\n\n# Dictionary Definition\nVerb: to pause before doing something, often because of uncertainty\n\n# Text Fragment\nHe did not hesitate before stepping forward\n\n# Paragraph Context\nHe took a breath. <fragment>He did not <target>hesitate</target> before stepping forward.</fragment> The crowd watched quietly."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"word_translation\":\"ためらう\",\"fragment_translation\":\"彼は一歩踏み出す前にためらわなかった\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nJapanese\n\n# Target Word\nshoreline\n\n# Text Fragment\nWe walked along the rocky shoreline at dawn\n\n# Paragraph Context\nThe tide was slowly rising. <fragment>We walked along the rocky <target>shoreline</target> at dawn.</fragment> Birds called above us."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"word_translation\":\"海岸線\",\"fragment_translation\":\"夜明けに私たちは岩の多い海岸線を歩いた\"}"
+    }
+]

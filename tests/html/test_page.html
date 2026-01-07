@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page for Click Translator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        h1 {
+            color: #0056b3;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        .highlight {
+            background-color: yellow;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .footer {
+            margin-top: 30px;
+            font-size: 0.8em;
+            text-align: center;
+            color: #666;
+        }
+
+        #darkModeToggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            z-index: 10000;
+        }
+
+        body.dark-mode {
+            background-color: #1a1a1a;
+            color: #ccc;
+        }
+
+        body.dark-mode .container {
+            background-color: #2c2c2c;
+            border-color: #444;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark-mode h1 {
+            color: #5c9be0;
+        }
+
+        body.dark-mode .footer {
+            color: #888;
+        }
+
+        body.dark-mode #darkModeToggle {
+            background-color: #333;
+            color: #fff;
+            border-color: #555;
+        }
+
+        .scroll-view {
+            height: 200px;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+        }
+
+        body.dark-mode .scroll-view {
+            background-color: #333;
+            border-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="darkModeToggle">Toggle Dark Mode</button>
+    <div class="container">
+        <h1>Welcome to the Test Page</h1>
+        <p>This is a paragraph with some <span class="highlight">important text</span> that might be selected for
+            translation.</p>
+        <p>Another paragraph here to provide more context. We want to ensure our extension works correctly with various
+            elements on a web page.</p>
+        <h2>Multilingual Content Section</h2>
+        <p>This section contains sentences in various widely spoken languages to test the translation functionality.</p>
+        <p><span lang="es">El sol brilla en el cielo azul, un espectáculo de la naturaleza que nos llena de energía y
+                vitalidad. Los árboles mecen sus hojas al compás del viento, creando una sinfonía de sonidos relajantes
+                que invitan a la meditación y al descanso. En el campo, las flores despliegan sus colores vibrantes,
+                atrayendo a las abejas y mariposas que danzan de flor en flor. La vida en el campo es un recordatorio
+                constante de la belleza y la simplicidad, un refugio del ajetreo de la ciudad. Aquí, el tiempo parece
+                transcurrir más despacio, permitiéndonos disfrutar de cada momento con plenitud y gratitud.</span>
+            (Spanish)</p>
+        <p><span lang="fr">Bonjour, comment ça va? La vie est une aventure passionnante, pleine de défis et
+                d'opportunités. Chaque jour est une nouvelle page à écrire, une chance de grandir et d'apprendre. Il est
+                important de poursuivre ses rêves avec détermination et courage, sans jamais abandonner face aux
+                obstacles. Le bonheur se trouve dans les petites choses de la vie : un sourire, un mot gentil, un moment
+                partagé avec ceux qu'on aime. Il faut savoir apprécier chaque instant et vivre pleinement, car le temps
+                est précieux et ne revient jamais. La clé du succès est la persévérance et la confiance en soi.</span>
+            (French)</p>
+        <p><span lang="it">La vita è bella e piena di sorprese, un viaggio meraviglioso che ci porta a scoprire nuovi
+                orizzonti e a superare i nostri limiti. Ogni giorno è un'opportunità per imparare qualcosa di nuovo, per
+                crescere come persone e per realizzare i nostri sogni. Non bisogna mai smettere di credere in se stessi
+                e nelle proprie capacità, perché la determinazione è la chiave per raggiungere qualsiasi obiettivo. Le
+                difficoltà fanno parte del percorso, ma è proprio superandole che diventiamo più forti e consapevoli.
+                L'importante è affrontare la vita con ottimismo e gratitudine, apprezzando ogni momento come un dono
+                prezioso.</span> (Italian)</p>
+        <p><span lang="de">Guten Tag, wie geht es Ihnen heute? Das Leben ist eine Reise voller Entdeckungen und
+                Abenteuer. Jeder Tag bringt neue Möglichkeiten, zu lernen und zu wachsen. Es ist wichtig, seine Ziele
+                mit Entschlossenheit zu verfolgen und sich von Rückschlägen nicht entmutigen zu lassen. Wahres Glück
+                findet man oft in den kleinen Dingen des Alltags: einem freundlichen Lächeln, einem guten Gespräch oder
+                einem Spaziergang in der Natur. Man sollte jeden Augenblick bewusst genießen, denn die Zeit ist ein
+                kostbares Gut. Der Schlüssel zum Erfolg liegt in der Ausdauer und dem Glauben an die eigenen
+                Fähigkeiten.</span> (German)</p>
+        <p><span lang="pt">Bom dia, o café está pronto. A vida é uma jornada fascinante, cheia de altos e baixos, mas
+                sempre recompensadora para quem tem coragem de seguir em frente. Cada novo amanhecer é um convite para
+                recomeçar, para aprender com os erros do passado e para construir um futuro melhor. É fundamental ter
+                sonhos e lutar por eles com paixão e dedicação. A felicidade não é um destino, mas sim o caminho que
+                percorremos. Devemos valorizar as pequenas alegrias do dia a dia e as pessoas que nos rodeiam, pois são
+                elas que tornam a nossa existência mais rica e significativa.</span> (Portuguese)</p>
+        <p><span lang="ru">Здравствуйте, как у вас сегодня дела? Жизнь – это удивительное приключение, полное
+                неожиданных поворотов и ярких моментов. Каждый день предоставляет нам шанс стать лучше, узнать что-то
+                новое и приблизиться к своей мечте. Важно не бояться трудностей, ведь именно они закаляют наш характер и
+                делают нас сильнее. Счастье заключается в простых вещах: в улыбке близкого человека, в красоте природы,
+                в возможности заниматься любимым делом. Нужно ценить каждое мгновение, ведь оно уникально и неповторимо.
+                Настойчивость и вера в себя – вот главные составляющие успеха на любом поприще.</span> (Russian)</p>
+        <p><span lang="ar">السلام عليكم، كيف حالك اليوم؟ الحياة رحلة مليئة بالتحديات والفرص التي تصقل شخصيتنا وتزيدنا
+                قوة. كل يوم هو صفحة جديدة في كتاب حياتنا، فلنحرص على أن نكتب فيها ما يسرنا في المستقبل. يجب أن نسعى
+                لتحقيق أحلامنا بشغف وعزيمة، وألا ندع العقبات تثنينا عن المضي قدمًا. السعادة الحقيقية تكمن في التفاصيل
+                الصغيرة التي نعيشها كل يوم: ابتسامة طفل، كلمة طيبة، أو لحظة تأمل في جمال الطبيعة. علينا أن نعيش كل لحظة
+                بوعي وامتنان، فالزمان لا يعود إلى الوراء. الإصرار والثقة بالنفس هما مفتاح النجاح في كل مسعى.</span>
+            (Arabic)</p>
+        <p><span
+                lang="zh-CN">你好，今天天气真好，不是吗？生活就像一场旅行，充满了未知的风景和挑战。每一天都是一个新的开始，给予我们学习和成长的机会。我们应该勇敢地追求自己的梦想，不畏惧路途中的困难和挫折。真正的幸福往往隐藏在平凡的生活细节中：一个温暖的微笑，一句鼓励的话语，或是一段与家人共度的美好时光。我们应当珍惜眼前的每一刻，因为时间一去不复返。坚持不懈和自信是通往成功的关键。只有不断努力，我们才能实现自己的人生价值，创造属于自己的精彩。</span>
+            (Chinese, Simplified)</p>
+        <p><span
+                lang="ja">こんにちは、今日はお元気ですか？人生は予測不可能な出来事に満ちた素晴らしい冒険です。毎日が新しい発見と学びの機会を与えてくれます。私たちは夢を追いかける勇気を持ち、困難に直面しても決して諦めてはなりません。真の幸福は、日常のささいな瞬間に見つかることが多いです。例えば、愛する人の笑顔、心温まる言葉、自然の美しさに触れるひとときなどです。一瞬一瞬を大切にし、感謝の気持ちを持って生きることが重要です。なぜなら、時間は貴重であり、二度と戻ってこないからです。忍耐力と自己信頼こそが、あらゆる努力における成功の鍵となります。</span>
+            (Japanese)</p>
+        <p><span lang="ko">안녕하세요, 오늘 기분 어때요? 인생은 예측할 수 없는 도전과 기회로 가득 찬 흥미진진한 여정입니다. 매일은 우리에게 새로운 것을 배우고 성장할 수 있는 기회를
+                제공합니다. 우리는 꿈을 향한 용기를 가져야 하며, 어려움에 직면했을 때 결코 포기해서는 안 됩니다. 진정한 행복은 종종 일상의 작은 순간들에서 발견됩니다. 사랑하는 사람의 미소, 따뜻한
+                격려의 말 한마디, 자연의 아름다움을 감상하는 시간 등이 바로 그것입니다. 시간은 되돌릴 수 없기에, 우리는 모든 순간을 소중히 여기고 감사하는 마음으로 살아야 합니다. 인내와 자신감은
+                모든 노력에서 성공의 열쇠입니다.</span> (Korean)</p>
+        <p><span lang="hi">नमस्ते, आप कैसे हैं? जीवन एक अद्भुत यात्रा है, जो अनगिनत चुनौतियों और अवसरों से भरी है। हर
+                दिन हमें कुछ नया सीखने और आगे बढ़ने का मौका देता है। हमें अपने सपनों का पीछा करने का साहस रखना चाहिए और
+                मुश्किलों के सामने कभी हार नहीं माननी चाहिए। सच्ची खुशी अक्सर जीवन की छोटी-छोटी चीजों में मिलती है: किसी
+                प्रियजन की मुस्कान, एक दयालु शब्द, या प्रकृति की सुंदरता में बिताया गया एक पल। हमें हर पल को संजोना
+                चाहिए और कृतज्ञता के साथ जीना चाहिए, क्योंकि समय बहुत कीमती है और कभी वापस नहीं आता। दृढ़ता और
+                आत्मविश्वास ही किसी भी प्रयास में सफलता की कुंजी है।</span> (Hindi)</p>
+
+        <h2>Numeric Content for Testing</h2>
+        <p>Here are some numbers to test the double-click functionality:</p>
+        <p>12345</p>
+        <p>9876543210</p>
+        <p>A sentence with a number 123 inside.</p>
+        <p>Another sentence with a number 45678 and some text.</p>
+
+        <h2>Multi-Block Selection Testing</h2>
+        <p>This section is designed to test selecting text across multiple block-level elements.</p>
+        <h3>Scenario 1: Heading and Paragraph</h3>
+        <p>Select the text from "Scenario 1" down to "and Paragraph" to test selection across an H3 and a P tag.</p>
+        
+        <h3>Scenario 2: Multiple Paragraphs</h3>
+        <p>This is the first paragraph. Lorem ipsum dolor sit amet.</p>
+        <p>This is the second paragraph. Consectetur adipiscing elit.</p>
+        <p>This is the third paragraph. Sed do eiusmod tempor incididunt.</p>
+
+        <h3>Scenario 3: List Items</h3>
+        <ul>
+            <li>First list item.</li>
+            <li>Second list item.</li>
+            <li>Third list item.</li>
+        </ul>
+
+        <h3>Scenario 4: Nested Blocks</h3>
+        <div>
+            <p>This is a paragraph inside a div.</p>
+            <p>Another paragraph in the same div.</p>
+        </div>
+        <blockquote>
+            <p>This is a blockquote containing a paragraph.</p>
+        </blockquote>
+
+        <h2>Scrollable Content Block</h2>
+        <div class="scroll-view">
+            <p>This is the beginning of a long, scrollable content area. It is designed to test how the extension
+                handles selections within a container that has its own scrollbar. This is a common scenario on modern
+                web pages, such as in comment sections, forums, or document viewers.</p>
+            <p>As you scroll down, you will find more text. The purpose is to ensure that the translation icon and
+                modal are positioned correctly relative to the selected text, even when the main page is not
+                scrolling but this container is.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor,
+                dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas
+                ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie,
+                enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque
+                vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra
+                tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim.
+                Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus
+                et ultrices posuere cubilia Curae; Aliquam nibh.</p>
+            <p>Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam. Modern text is
+                often full of jargon and technical terms. The AI Click Translator must be able to handle these
+                situations gracefully, providing accurate translations for specialized content. For example, a user
+                might be reading a technical blog post about software development, a scientific paper, or a legal
+                document.</p>
+            <p>Here is some more filler text to ensure the scrolling is significant. The quick brown fox jumps over
+                the lazy dog. This classic pangram is useful for testing font rendering. We need to ensure that our
+                injected UI elements do not interfere with the readability of the underlying text. The font, color,
+                and positioning of the translation display are all critical factors for a good user experience.</p>
+            <p>Let's add another paragraph. The more content we have, the better we can simulate a real-world
+                scenario. Imagine a long article or a detailed report. The user should be able to select any part of
+                it and get a translation without any issues. The scroll position of this container should not affect
+                the main page's scroll position, and vice versa.</p>
+            <p>Final paragraph in this scrollable view. This is the end of the content within this specific box.
+                Selecting text here should trigger the translation UI just as it would anywhere else on the page. The
+                key is to verify that the positioning logic correctly accounts for the container's own coordinate
+                system and scroll offset. Thank you for testing!</p>
+        </div>
+
+        <h2>Non-Scrolling Scrollable Content Block</h2>
+        <div class="scroll-view">
+            <p>This block has the same scroll-view class, but its content is too short to actually require scrolling.</p>
+            <p>This is to test that the presence of the `overflow-y: scroll` style doesn't negatively impact the layout or behavior of the extension when the content does not exceed the container's height.</p>
+        </div>
+
+        <h2>Content with Long Words</h2>
+        <p>The <span class="highlight">antidisestablishmentarianism</span> of the political movement was quite
+            remarkable, contrasting sharply with the prevailing views.</p>
+        <p>The <span class="highlight">unbelievable</span> complexity of the system required extensive documentation.
+        </p>
+        <p>She demonstrated an <span class="highlight">extraordinary</span> talent for musical composition.</p>
+        <p>The <span class="highlight">misunderstanding</span> led to a lengthy discussion among the team members.</p>
+
+        <h2>Additional Paragraphs for Scrolling</h2>
+        <p>This is another paragraph to ensure the page is long enough for scroll testing. We need to be able to select
+            text at different points on the page, both at the top, middle, and bottom, to ensure the translation icon
+            and modal appear correctly regardless of the scroll position.</p>
+        <p>Further content is added here. The purpose of this text is purely to occupy space. It does not need to be
+            meaningful, but it should be structured in paragraphs to simulate a real webpage. This helps in verifying
+            that the extension's DOM analysis and element injection logic are robust and do not interfere with the
+            page's layout or styling.</p>
+        <p>One more paragraph for good measure. Testing with a long page is crucial for identifying potential
+            performance issues or bugs related to event listeners and positioning calculations that might only manifest
+            when the document's height is significant. The interaction between the content script and the host page's
+            CSS and JavaScript can sometimes lead to unexpected behavior, which is what we aim to uncover with this test
+            setup.</p>
+
+        <p>This is an extraordinarily verbose and exceptionally protracted sentence, meticulously crafted to push the
+            boundaries of text selection and translation within the AI Click Translator extension, encompassing a
+            multitude of complex linguistic structures, diverse vocabulary, and intricate contextual nuances, thereby
+            guaranteeing a comprehensive evaluation of its robustness, accuracy, and performance across an extensive
+            array of user interactions, display configurations, and dynamic web page environments, ultimately aiming to
+            validate its capability to seamlessly process and render translations for even the most expansive and
+            challenging textual inputs without compromising user experience or interface integrity.</p>
+        <ul>
+            <li>List item one.</li>
+            <li>List item two.</li>
+            <li>List item three.</li>
+        </ul>
+        <div class="footer">
+            <p>&copy; 2025 Test Page. All rights reserved.</p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('darkModeToggle').addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+    </script>
+</body>
+
+</html>

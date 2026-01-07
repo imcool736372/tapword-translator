@@ -1,0 +1,26 @@
+[
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nChinese\n\n# Target Fragment\nflickering candle\n\n# Context\nPower was out in the neighborhood. <fragment>flickering candle</fragment> The room smelled faintly of wax."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"闪烁的蜡烛\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nChinese\n\n# Target Fragment\nmorning chill\n\n# Context\nDew still clung to the grass. <fragment>morning chill</fragment> The city had not yet woken up."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"清晨的寒意\"}"
+    },
+    {
+        "role": "user",
+        "content": "# Source Language\nEnglish\n\n# Target Language\nChinese\n\n# Target Fragment\nfolding chairs\n\n# Context\nVolunteers prepared the hall. <fragment>folding chairs</fragment> Music would start in twenty minutes."
+    },
+    {
+        "role": "assistant",
+        "content": "{\"translation\":\"折叠椅\"}"
+    }
+]
