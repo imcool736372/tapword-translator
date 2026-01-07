@@ -35,11 +35,11 @@ export function logWidths(phase: string): void {
             },
             container: container
                 ? {
-                    present: true,
-                    clientWidth: container.clientWidth,
-                    scrollWidth: container.scrollWidth,
-                    offsetWidth: container.offsetWidth,
-                }
+                      present: true,
+                      clientWidth: container.clientWidth,
+                      scrollWidth: container.scrollWidth,
+                      offsetWidth: container.offsetWidth,
+                  }
                 : { present: false },
             header: header ? { clientWidth: header.clientWidth } : { present: false },
             settings: settings ? { clientWidth: settings.clientWidth } : { present: false },

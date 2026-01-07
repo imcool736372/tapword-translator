@@ -6,9 +6,9 @@
  */
 
 import * as constants from "@/1_content/constants"
-import * as loggerModule from '@/0_common/utils/logger';
+import * as loggerModule from "@/0_common/utils/logger"
 
-const logger = loggerModule.createLogger('1_content/utils/translationOverlapDetector');
+const logger = loggerModule.createLogger("1_content/utils/translationOverlapDetector")
 
 /**
  * Detects translation anchors that overlap with the given range.

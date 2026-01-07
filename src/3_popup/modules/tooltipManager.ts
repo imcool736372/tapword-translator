@@ -124,10 +124,7 @@ export function setupTooltipPositioning(helpIcons: NodeListOf<HTMLElement>, cont
 /**
  * Set up click handlers for tooltip toggle on mobile/touch devices
  */
-export function setupTooltipClickHandlers(
-    helpIcons: NodeListOf<HTMLElement>,
-    _popupContainer: HTMLElement | null
-): void {
+export function setupTooltipClickHandlers(helpIcons: NodeListOf<HTMLElement>, _popupContainer: HTMLElement | null): void {
     void _popupContainer
     const iconsArray = Array.from(helpIcons)
 

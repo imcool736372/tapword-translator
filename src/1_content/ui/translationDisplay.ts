@@ -14,9 +14,9 @@ import type { TranslationDetailData } from "@/1_content/ui/translationModal"
 import * as translationModal from "@/1_content/ui/translationModal"
 import * as lineHeightAdjuster from "@/1_content/utils/lineHeightAdjuster"
 import * as styleCalculator from "@/1_content/utils/styleCalculator"
-import * as loggerModule from '@/0_common/utils/logger';
+import * as loggerModule from "@/0_common/utils/logger"
 
-const logger = loggerModule.createLogger('1_content/ui/translationDisplay');
+const logger = loggerModule.createLogger("1_content/ui/translationDisplay")
 
 // ============================================================================
 // Type Definitions
@@ -149,21 +149,21 @@ export function removeTranslationResult(anchorId: string): void {
 /**
  * Find the nearest scrollable ancestor of an element.
  * Returns null if no scrollable parent is found (meaning the main viewport is the scroller).
- * 
+ *
  * @param element - The element to start searching from
  * @returns The scrollable parent element or null if none found
  */
 function findScrollableParent(element: HTMLElement): HTMLElement | null {
     let parent = element.parentElement
 
-    while (parent && parent.tagName !== 'HTML') {
+    while (parent && parent.tagName !== "HTML") {
         const styles = window.getComputedStyle(parent)
-        const overflowY = styles.getPropertyValue('overflow-y')
-        const overflowX = styles.getPropertyValue('overflow-x')
+        const overflowY = styles.getPropertyValue("overflow-y")
+        const overflowX = styles.getPropertyValue("overflow-x")
 
         // Check if overflow style allows scrolling
-        const isScrollableY = overflowY === 'auto' || overflowY === 'scroll'
-        const isScrollableX = overflowX === 'auto' || overflowX === 'scroll'
+        const isScrollableY = overflowY === "auto" || overflowY === "scroll"
+        const isScrollableX = overflowX === "auto" || overflowX === "scroll"
 
         // Check if element is actually overflowing
         if (isScrollableY && parent.scrollHeight > parent.clientHeight) {
@@ -184,7 +184,7 @@ function findScrollableParent(element: HTMLElement): HTMLElement | null {
  * Set up IntersectionObserver to control tooltip visibility based on anchor visibility.
  * The tooltip will be hidden when the anchor scrolls out of view in its scrollable container.
  * Only sets up observer if anchor is inside a scrollable container (not for viewport scrolling).
- * 
+ *
  * @param anchorId - The unique ID of the anchor
  * @param anchor - The anchor element to observe
  * @param tooltip - The tooltip element to show/hide
@@ -204,9 +204,9 @@ function setupVisibilityObserver(anchorId: string, anchor: HTMLElement): void {
         // Create IntersectionObserver with the scrollable parent as root
         const observer = new IntersectionObserver(
             (entries) => {
-                entries.forEach(entry => {
+                entries.forEach((entry) => {
                     const tooltips = activeTranslations.get(anchorId) || []
-                    const visibility = entry.isIntersecting ? 'visible' : 'hidden'
+                    const visibility = entry.isIntersecting ? "visible" : "hidden"
                     for (const tooltip of tooltips) {
                         tooltip.style.visibility = visibility
                     }
@@ -732,7 +732,7 @@ export function showTranslationResult(
 
         // Apply dynamic line-height adjustment if enabled and needed
         // Check user setting for auto-adjust height
-        const autoAdjustHeight = (userSettings?.autoAdjustHeight ?? contentIndex.getCachedUserSettings()?.autoAdjustHeight) ?? true // Default to true if settings not loaded
+        const autoAdjustHeight = userSettings?.autoAdjustHeight ?? contentIndex.getCachedUserSettings()?.autoAdjustHeight ?? true // Default to true if settings not loaded
         if (autoAdjustHeight && styleResult?.spaceCalculation) {
             const adjustedBlock = lineHeightAdjuster.adjustLineHeightIfNeeded(anchor, styleResult.spaceCalculation)
             if (adjustedBlock) {
@@ -815,11 +815,7 @@ export function showTranslationResult(
  * });
  * ```
  */
-export function updateTranslationResult(
-    anchorId: string,
-    state: TranslationState,
-    userSettings?: DisplayUserSettings
-): void {
+export function updateTranslationResult(anchorId: string, state: TranslationState, userSettings?: DisplayUserSettings): void {
     try {
         const tooltips = activeTranslations.get(anchorId)
         const tooltip = tooltips && tooltips.length > 0 ? tooltips[0] : null

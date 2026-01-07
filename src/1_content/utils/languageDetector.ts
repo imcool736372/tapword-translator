@@ -171,7 +171,7 @@ export function resolveTargetLanguage(sourceLanguage: string, targetLanguage: st
     // If source and target are the same, apply fallback rules
     if (srcLang === tgtLang) {
         logger.info(`Source language (${srcLang}) matches target language (${tgtLang}), applying fallback`)
-        
+
         if (srcLang === "zh") {
             // Chinese content with Chinese target -> English
             logger.info("Chinese -> English fallback applied")

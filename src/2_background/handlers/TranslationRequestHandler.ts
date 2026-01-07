@@ -23,7 +23,8 @@ export async function handleTranslationRequest(
     sendResponse: (response: TranslateResponseMessage) => void
 ): Promise<void> {
     try {
-        const { word, leadingText, trailingText, previousSentences, nextSentences, sourceLanguage, targetLanguage, upgradeModel, bookName } = message.data
+        const { word, leadingText, trailingText, previousSentences, nextSentences, sourceLanguage, targetLanguage, upgradeModel, bookName } =
+            message.data
 
         logger.info("Translating word:", word, "with context")
 

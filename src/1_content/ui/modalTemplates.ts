@@ -126,7 +126,6 @@ function createDictionarySection(
     })
 }
 
-
 /**
  * Check if text contains meaningful words (letters or numbers)
  * This matches the backend logic for determining if sentence translation should be shown
@@ -214,13 +213,7 @@ export function renderSuccessTemplate(data: TranslationDetailData, showUpdateLab
     const dictionaryContent = isChinese ? data.chineseDefinition : data.targetDefinition
 
     if (dictionaryContent) {
-        dictionarySection = createDictionarySection(
-            dictionaryContent,
-            data.lemma,
-            data.lemmaPhonetic,
-            data.sourceLanguage,
-            data.targetLanguage
-        )
+        dictionarySection = createDictionarySection(dictionaryContent, data.lemma, data.lemmaPhonetic, data.sourceLanguage, data.targetLanguage)
     }
 
     // Format phonetic text with slashes if available

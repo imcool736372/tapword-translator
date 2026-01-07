@@ -11,13 +11,13 @@ export { OpenAICompatibleClient, createOpenAICompatibleClient } from "./services
 
 // Types
 export type {
-	LLMConfig,
-	WordTranslationRequest,
-	WordTranslationResult,
-	FragmentTranslationRequest,
-	FragmentTranslationResult,
-	ChatMessage,
-	ChatRole,
+    LLMConfig,
+    WordTranslationRequest,
+    WordTranslationResult,
+    FragmentTranslationRequest,
+    FragmentTranslationResult,
+    ChatMessage,
+    ChatRole,
 } from "./types/GenerateTypes"
 
 // Constants

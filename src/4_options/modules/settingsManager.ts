@@ -13,7 +13,7 @@ import { translateWord as translateWordWithLLM } from "@/8_generate"
 import type { LLMConfig } from "@/8_generate"
 
 const logger = loggerModule.createLogger("Options/Settings")
-const CUSTOM_API_CONTROL_SELECTOR = "[data-custom-api-control=\"true\"]"
+const CUSTOM_API_CONTROL_SELECTOR = '[data-custom-api-control="true"]'
 const isCommunityEdition = APP_EDITION === "community"
 const AUTO_PLAY_AUDIO_SETTING_ID = "autoPlayAudio"
 
@@ -130,9 +130,9 @@ async function saveCustomApiSettings(partial: Partial<types.CustomApiSettings>):
     const current = await storageManagerModule.getUserSettings()
     const nextPartial = isCommunityEdition
         ? {
-            ...partial,
-            useCustomApi: true,
-        }
+              ...partial,
+              useCustomApi: true,
+          }
         : partial
 
     await storageManagerModule.updateUserSettings({
@@ -192,7 +192,9 @@ export async function loadSettings(): Promise<void> {
             }
         })
 
-        const textInputs = document.querySelectorAll('input[type="text"][data-setting], input[type="url"][data-setting], input[type="password"][data-setting]')
+        const textInputs = document.querySelectorAll(
+            'input[type="text"][data-setting], input[type="url"][data-setting], input[type="password"][data-setting]'
+        )
         textInputs.forEach((input) => {
             const inputElement = input as HTMLInputElement
             const settingKey = inputElement.dataset.setting
@@ -326,7 +328,9 @@ export function setupSettingChangeListeners(): void {
         })
     })
 
-    const textInputs = document.querySelectorAll('input[type="text"][data-setting], input[type="url"][data-setting], input[type="password"][data-setting]')
+    const textInputs = document.querySelectorAll(
+        'input[type="text"][data-setting], input[type="url"][data-setting], input[type="password"][data-setting]'
+    )
     textInputs.forEach((input) => {
         input.addEventListener("change", async (event) => {
             const inputElement = event.target as HTMLInputElement
@@ -337,11 +341,7 @@ export function setupSettingChangeListeners(): void {
 
             const value = inputElement.value.trim()
 
-            if (
-                settingKey === "customApiBaseUrl" ||
-                settingKey === "customApiKey" ||
-                settingKey === "customApiModel"
-            ) {
+            if (settingKey === "customApiBaseUrl" || settingKey === "customApiKey" || settingKey === "customApiModel") {
                 const partial: Partial<types.CustomApiSettings> = {}
 
                 if (settingKey === "customApiBaseUrl") {
@@ -449,4 +449,3 @@ export function setupCustomApiValidation(): void {
         }
     })
 }
-

@@ -203,13 +203,13 @@ function calculateOptimalTranslationFontSize(
 
     logger.info(
         `Font size calculation complete. ` +
-        `Result: ${translationFontSize.toFixed(2)}px. ` +
-        `Details: original=${originalFontSize.toFixed(2)}px, ` +
-        `lineHeight=${lineHeight.toFixed(2)}px, ` +
-        `lineSpacing=${lineSpacing.toFixed(2)}px, ` +
-        `availableSpace=${availableSpace.toFixed(2)}px, ` +
-        `effectiveAvailable=${effectiveAvailable.toFixed(2)}px, safetyDelta=${safetyDelta}, ` +
-        `constraints(min=${minFontSize}, max=${maxFontSize.toFixed(2)})`
+            `Result: ${translationFontSize.toFixed(2)}px. ` +
+            `Details: original=${originalFontSize.toFixed(2)}px, ` +
+            `lineHeight=${lineHeight.toFixed(2)}px, ` +
+            `lineSpacing=${lineSpacing.toFixed(2)}px, ` +
+            `availableSpace=${availableSpace.toFixed(2)}px, ` +
+            `effectiveAvailable=${effectiveAvailable.toFixed(2)}px, safetyDelta=${safetyDelta}, ` +
+            `constraints(min=${minFontSize}, max=${maxFontSize.toFixed(2)})`
     )
 
     return { fontSize: translationFontSize, spaceCalculation }

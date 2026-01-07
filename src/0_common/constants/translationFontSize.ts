@@ -24,9 +24,7 @@ export function getFontSizePxFromPreset(preset?: TranslationFontSizePreset): num
 /**
  * Resolve preset and pixel size.
  */
-export function resolveTranslationFontSize(
-    preset?: TranslationFontSizePreset
-): { preset: TranslationFontSizePreset; px: number } {
+export function resolveTranslationFontSize(preset?: TranslationFontSizePreset): { preset: TranslationFontSizePreset; px: number } {
     const resolvedPreset = preset ?? DEFAULT_TRANSLATION_FONT_SIZE_PRESET
     const px = getFontSizePxFromPreset(resolvedPreset)
     return { preset: resolvedPreset, px }

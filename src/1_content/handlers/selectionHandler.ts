@@ -28,9 +28,7 @@ const logger = loggerModule.createLogger("selectionHandler")
 const MAX_PARALLEL_TRANSLATIONS = 3
 
 function buildDisplaySettings(settings: Partial<{ translationFontSizePreset?: TranslationFontSizePreset; autoAdjustHeight?: boolean }> | null) {
-    const resolvedFont = translationFontSizeModule.resolveTranslationFontSize(
-        settings?.translationFontSizePreset
-    )
+    const resolvedFont = translationFontSizeModule.resolveTranslationFontSize(settings?.translationFontSizePreset)
 
     return {
         translationFontSizePreset: resolvedFont.preset,
@@ -194,7 +192,12 @@ export async function handleDoubleClick(): Promise<void> {
     await runBatchedTranslations(triggerLabel, targets, limiter, loadingVariant)
 }
 
-async function runBatchedTranslations(triggerLabel: string, ranges: Range[], limiter: RequestLimiter, loadingVariant: "text" | "spinner"): Promise<void> {
+async function runBatchedTranslations(
+    triggerLabel: string,
+    ranges: Range[],
+    limiter: RequestLimiter,
+    loadingVariant: "text" | "spinner"
+): Promise<void> {
     await Promise.all(ranges.map((targetRange) => processTranslation(targetRange, triggerLabel, limiter, loadingVariant)))
 }
 
@@ -222,7 +225,12 @@ export function handleDocumentClick(event: Event): void {
  * @param range - The Range object containing the selected text
  * @param triggerSource - Source of the trigger for logging purposes
  */
-async function processTranslation(range: Range, triggerSource: string, limiter?: RequestLimiter, loadingVariant: "text" | "spinner" = "text"): Promise<void> {
+async function processTranslation(
+    range: Range,
+    triggerSource: string,
+    limiter?: RequestLimiter,
+    loadingVariant: "text" | "spinner" = "text"
+): Promise<void> {
     // Sanitize selection text to exclude our UI (e.g., tooltip content)
     const rawText = domSanitizer.getCleanTextFromRange(range)
     const sanitizedText = rawText.trim()
@@ -288,7 +296,13 @@ async function processTranslation(range: Range, triggerSource: string, limiter?:
  * @param word - The word to translate
  * @param detectedLang - Pre-detected source language from processTranslation
  */
-async function translateWordPath(range: Range, word: string, detectedLang: string, limiter?: RequestLimiter, loadingVariant: "text" | "spinner" = "text"): Promise<void> {
+async function translateWordPath(
+    range: Range,
+    word: string,
+    detectedLang: string,
+    limiter?: RequestLimiter,
+    loadingVariant: "text" | "spinner" = "text"
+): Promise<void> {
     logger.info("[Word Path] Translating word:", word, "| Language:", detectedLang)
 
     // IMPORTANT: Extract context BEFORE any DOM mutations (wrap/cleanup)
@@ -325,18 +339,22 @@ async function translateWordPath(range: Range, word: string, detectedLang: strin
             const requestFn = () => translationRequest.requestTranslation(payload)
             const response = limiter ? await limiter(requestFn) : await requestFn()
             if (response.success) {
-                translationDisplay.updateTranslationResult(anchorId, {
-                    status: "success",
-                    translation: response.data.wordTranslation,
-                    sentenceTranslation: response.data.sentenceTranslation,
-                    chineseDefinition: response.data.chineseDefinition,
-                    englishDefinition: response.data.englishDefinition,
-                    targetDefinition: response.data.targetDefinition,
-                    targetLanguage: targetLang,
-                    lemma: response.data.lemma,
-                    phonetic: response.data.phonetic,
-                    lemmaPhonetic: response.data.lemmaPhonetic,
-                }, displaySettings)
+                translationDisplay.updateTranslationResult(
+                    anchorId,
+                    {
+                        status: "success",
+                        translation: response.data.wordTranslation,
+                        sentenceTranslation: response.data.sentenceTranslation,
+                        chineseDefinition: response.data.chineseDefinition,
+                        englishDefinition: response.data.englishDefinition,
+                        targetDefinition: response.data.targetDefinition,
+                        targetLanguage: targetLang,
+                        lemma: response.data.lemma,
+                        phonetic: response.data.phonetic,
+                        lemmaPhonetic: response.data.lemmaPhonetic,
+                    },
+                    displaySettings
+                )
             } else {
                 // Check errorType to determine error handling
                 // QuotaExceeded: use short message for tooltip, keep detailed message for modal
@@ -352,19 +370,27 @@ async function translateWordPath(range: Range, word: string, detectedLang: strin
                     errorMessage = response.error
                 }
 
-                translationDisplay.updateTranslationResult(anchorId, {
-                    status: "error",
-                    text: tooltipText,
-                    errorMessage: errorMessage,
-                }, displaySettings)
+                translationDisplay.updateTranslationResult(
+                    anchorId,
+                    {
+                        status: "error",
+                        text: tooltipText,
+                        errorMessage: errorMessage,
+                    },
+                    displaySettings
+                )
                 logger.error("Word translation error:", response.error)
             }
         } catch (error) {
-            translationDisplay.updateTranslationResult(anchorId, {
-                status: "error",
-                text: "翻译失败",
-                errorMessage: ERROR_MESSAGES.SERVER_BUSY,
-            }, displaySettings)
+            translationDisplay.updateTranslationResult(
+                anchorId,
+                {
+                    status: "error",
+                    text: "翻译失败",
+                    errorMessage: ERROR_MESSAGES.SERVER_BUSY,
+                },
+                displaySettings
+            )
             logger.error("Word translation request failed:", error)
         }
     }
@@ -420,7 +446,13 @@ async function translateWordPath(range: Range, word: string, detectedLang: strin
  * @param fragment - The text fragment to translate
  * @param detectedLang - Pre-detected source language from processTranslation
  */
-async function translateFragmentPath(range: Range, fragment: string, detectedLang: string, limiter?: RequestLimiter, loadingVariant: "text" | "spinner" = "text"): Promise<void> {
+async function translateFragmentPath(
+    range: Range,
+    fragment: string,
+    detectedLang: string,
+    limiter?: RequestLimiter,
+    loadingVariant: "text" | "spinner" = "text"
+): Promise<void> {
     logger.info("[Fragment Path] Translating fragment:", fragment, "| Language:", detectedLang)
 
     // IMPORTANT: Extract context BEFORE any DOM mutations (wrap/cleanup)
@@ -470,11 +502,15 @@ async function translateFragmentPath(range: Range, fragment: string, detectedLan
             const requestFn = () => translationRequest.requestFragmentTranslation(requestPayload)
             const response = limiter ? await limiter(requestFn) : await requestFn()
             if (response.success) {
-                translationDisplay.updateTranslationResult(anchorId, {
-                    status: "success",
-                    translation: response.data.translation,
-                    sentenceTranslation: response.data.sentenceTranslation,
-                }, displaySettings)
+                translationDisplay.updateTranslationResult(
+                    anchorId,
+                    {
+                        status: "success",
+                        translation: response.data.translation,
+                        sentenceTranslation: response.data.sentenceTranslation,
+                    },
+                    displaySettings
+                )
             } else {
                 // Check errorType to determine error handling
                 // QuotaExceeded: use short message for tooltip, keep detailed message for modal
@@ -490,19 +526,27 @@ async function translateFragmentPath(range: Range, fragment: string, detectedLan
                     errorMessage = response.error
                 }
 
-                translationDisplay.updateTranslationResult(anchorId, {
-                    status: "error",
-                    text: tooltipText,
-                    errorMessage: errorMessage,
-                }, displaySettings)
+                translationDisplay.updateTranslationResult(
+                    anchorId,
+                    {
+                        status: "error",
+                        text: tooltipText,
+                        errorMessage: errorMessage,
+                    },
+                    displaySettings
+                )
                 logger.error("Fragment translation error:", response.error)
             }
         } catch (error) {
-            translationDisplay.updateTranslationResult(anchorId, {
-                status: "error",
-                text: "翻译失败",
-                errorMessage: ERROR_MESSAGES.SERVER_BUSY,
-            }, displaySettings)
+            translationDisplay.updateTranslationResult(
+                anchorId,
+                {
+                    status: "error",
+                    text: "翻译失败",
+                    errorMessage: ERROR_MESSAGES.SERVER_BUSY,
+                },
+                displaySettings
+            )
             logger.error("Fragment translation request failed:", error)
         }
     }

@@ -8,10 +8,10 @@ export const ADVANCED_FEATURES_ENABLED = import.meta.env.VITE_ENABLE_ADVANCED_FE
 
 export { ERROR_MESSAGES } from "./errorMessages"
 export {
-	DEFAULT_TRANSLATION_FONT_SIZE_PRESET,
-	getFontSizePxFromPreset,
-	resolveTranslationFontSize,
-	TRANSLATION_FONT_SIZE_MAP,
+    DEFAULT_TRANSLATION_FONT_SIZE_PRESET,
+    getFontSizePxFromPreset,
+    resolveTranslationFontSize,
+    TRANSLATION_FONT_SIZE_MAP,
 } from "./translationFontSize"
 
 export const CACHE_EXPIRY_MS = 7 * 24 * 60 * 60 * 1000 // 7 days

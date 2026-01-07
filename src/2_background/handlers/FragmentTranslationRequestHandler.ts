@@ -23,7 +23,8 @@ export async function handleFragmentTranslationRequest(
     sendResponse: (response: FragmentTranslateResponseMessage) => void
 ): Promise<void> {
     try {
-        const { fragment, leadingText, trailingText, previousSentences, nextSentences, sourceLanguage, targetLanguage, upgradeModel, bookName } = message.data
+        const { fragment, leadingText, trailingText, previousSentences, nextSentences, sourceLanguage, targetLanguage, upgradeModel, bookName } =
+            message.data
 
         logger.info("Translating fragment:", fragment)
 

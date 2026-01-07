@@ -50,9 +50,7 @@ export async function loadWebsiteLink(): Promise<void> {
             if (needsUpdate) {
                 linkElement.innerHTML = `${i18nModule.translate("popup.websiteLink.updateAvailable")} <span class="website-link-icon update-icon">✨</span>`
                 linkElement.classList.add("update-available")
-                logger.info(
-                    `✅ UPDATE AVAILABLE - Setting text to "${i18nModule.translate("popup.websiteLink.updateAvailable")}"`
-                )
+                logger.info(`✅ UPDATE AVAILABLE - Setting text to "${i18nModule.translate("popup.websiteLink.updateAvailable")}"`)
             } else {
                 linkElement.innerHTML = `${i18nModule.translate("popup.websiteLink")} <span class="website-link-icon">→</span>`
                 linkElement.classList.remove("update-available")

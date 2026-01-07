@@ -258,7 +258,7 @@ export interface UserSettings {
 
 /**
  * Default user settings
- * Note: targetLanguage default is 'en', but will be dynamically overridden 
+ * Note: targetLanguage default is 'en', but will be dynamically overridden
  * based on browser language for new users in storageManager.getUserSettings()
  */
 export const DEFAULT_USER_SETTINGS: UserSettings = {
@@ -267,7 +267,7 @@ export const DEFAULT_USER_SETTINGS: UserSettings = {
     doubleClickTranslate: true,
     autoAdjustHeight: true,
     autoPlayAudio: true,
-    targetLanguage: 'en',
+    targetLanguage: "en",
     translationFontSizePreset: "medium",
     translationFontSize: 10,
     tooltipNextLineGapPx: 2,
@@ -280,4 +280,3 @@ export const DEFAULT_USER_SETTINGS: UserSettings = {
         model: "",
     },
 }
-

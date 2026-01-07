@@ -162,7 +162,7 @@ export function applyTranslations(root: Document | Element = document): void {
 
             if (tagName === "input" || tagName === "textarea") {
                 // For input elements, update placeholder
-                (element as HTMLInputElement).placeholder = translatedText
+                ;(element as HTMLInputElement).placeholder = translatedText
             } else {
                 // For other elements, update inner text
                 element.textContent = translatedText

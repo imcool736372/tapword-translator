@@ -43,10 +43,7 @@ export function getLanguageName(languageCode: string): string {
  * @param targetLanguage Target language code
  * @returns Object with sourceName and targetName
  */
-export function getLanguageNames(
-    sourceLanguage?: string,
-    targetLanguage?: string
-): { sourceName: string; targetName: string } {
+export function getLanguageNames(sourceLanguage?: string, targetLanguage?: string): { sourceName: string; targetName: string } {
     return {
         sourceName: getLanguageName(sourceLanguage || "en"),
         targetName: getLanguageName(targetLanguage || "zh"),

@@ -38,7 +38,7 @@ async function fetchTextFile(taskName: string, fileName: string): Promise<string
     const url = getResourceUrl(taskName, fileName)
 
     logger.debug(`Fetching text file from: ${url}`)
-    
+
     try {
         const response = await fetch(url)
         if (!response.ok) {
@@ -107,10 +107,10 @@ export async function loadFewshot(taskName: string, language?: string): Promise<
     const fallbackUrl = getResourceUrl(taskName, `${constants.DEFAULT_FEWSHOT_LANGUAGE}/${constants.PROMPT_FILE_FEWSHOT}`)
 
     logger.debug(`Attempting to load fewshot from: ${candidateUrl}`)
-    
+
     let url = candidateUrl
     let response: Response | null = null
-    
+
     // Try to fetch language-specific fewshot
     try {
         response = await fetch(url)
@@ -128,7 +128,7 @@ export async function loadFewshot(taskName: string, language?: string): Promise<
     if (!response) {
         url = fallbackUrl
         logger.debug(`Attempting to load fallback fewshot from: ${url}`)
-        
+
         try {
             response = await fetch(url)
             if (!response.ok) {

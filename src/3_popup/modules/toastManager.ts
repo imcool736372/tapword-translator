@@ -41,9 +41,7 @@ export interface ToastOptions {
  */
 export function showToast(message: string, typeOrOptions: ToastType | ToastOptions = {}): void {
     // Normalize parameters for backward compatibility
-    const options: ToastOptions = typeof typeOrOptions === "string"
-        ? { type: typeOrOptions }
-        : typeOrOptions
+    const options: ToastOptions = typeof typeOrOptions === "string" ? { type: typeOrOptions } : typeOrOptions
     const { type = "info", maxWidth = DEFAULT_MAX_WIDTH_PX } = options
 
     try {
@@ -99,9 +97,7 @@ export function showToast(message: string, typeOrOptions: ToastType | ToastOptio
         activeToast = toast
 
         const viewportWidth = document.body?.clientWidth ?? window.innerWidth ?? 0
-        const availableWidth = viewportWidth > 0
-            ? Math.max(0, viewportWidth - POPUP_SAFE_MARGIN_PX)
-            : maxWidth
+        const availableWidth = viewportWidth > 0 ? Math.max(0, viewportWidth - POPUP_SAFE_MARGIN_PX) : maxWidth
         const resolvedWidth = Math.min(maxWidth, availableWidth || maxWidth)
 
         const naturalWidth = toast.scrollWidth
