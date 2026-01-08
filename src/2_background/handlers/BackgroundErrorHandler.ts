@@ -5,14 +5,16 @@
  * Errors are now properly typed and wrapped by TranslationService
  */
 
-import { QuotaExceededError, type FragmentTranslateResponseMessage, type SpeechSynthesisResponseMessage, type TranslateResponseMessage } from "@/0_common/types"
+import {
+    QuotaExceededError,
+    type FragmentTranslateResponseMessage,
+    type SpeechSynthesisResponseMessage,
+    type TranslateResponseMessage,
+} from "@/0_common/types"
 import { TranslationError } from "@/6_translate"
 import { SpeechError } from "@/7_speech"
 
-function sendTranslationErrorResponse(
-    error: TranslationError,
-    sendResponse: (response: TranslateResponseMessage) => void
-): void {
+function sendTranslationErrorResponse(error: TranslationError, sendResponse: (response: TranslateResponseMessage) => void): void {
     sendResponse({
         type: "TRANSLATE_RESPONSE",
         success: false,
@@ -22,10 +24,7 @@ function sendTranslationErrorResponse(
     })
 }
 
-function sendFragmentTranslationErrorResponse(
-    error: TranslationError,
-    sendResponse: (response: FragmentTranslateResponseMessage) => void
-): void {
+function sendFragmentTranslationErrorResponse(error: TranslationError, sendResponse: (response: FragmentTranslateResponseMessage) => void): void {
     sendResponse({
         type: "FRAGMENT_TRANSLATE_RESPONSE",
         success: false,
@@ -41,10 +40,7 @@ function sendFragmentTranslationErrorResponse(
  * @param error - The error to handle (QuotaExceededError or TranslationError)
  * @param sendResponse - Response callback function
  */
-export function handleTranslationRequestError(
-    error: unknown,
-    sendResponse: (response: TranslateResponseMessage) => void
-): void {
+export function handleTranslationRequestError(error: unknown, sendResponse: (response: TranslateResponseMessage) => void): void {
     // Handle QuotaExceededError
     if (error instanceof QuotaExceededError) {
         sendResponse({
@@ -77,10 +73,7 @@ export function handleTranslationRequestError(
  * @param error - The error to handle (QuotaExceededError or TranslationError)
  * @param sendResponse - Response callback function
  */
-export function handleFragmentTranslationRequestError(
-    error: unknown,
-    sendResponse: (response: FragmentTranslateResponseMessage) => void
-): void {
+export function handleFragmentTranslationRequestError(error: unknown, sendResponse: (response: FragmentTranslateResponseMessage) => void): void {
     // Handle QuotaExceededError
     if (error instanceof QuotaExceededError) {
         sendResponse({
@@ -113,10 +106,7 @@ export function handleFragmentTranslationRequestError(
  * @param error - The error to handle
  * @param sendResponse - Response callback function
  */
-export function handleSpeechSynthesisRequestError(
-    error: unknown,
-    sendResponse: (response: SpeechSynthesisResponseMessage) => void
-): void {
+export function handleSpeechSynthesisRequestError(error: unknown, sendResponse: (response: SpeechSynthesisResponseMessage) => void): void {
     // Handle QuotaExceededError directly
     if (error instanceof QuotaExceededError) {
         sendResponse({

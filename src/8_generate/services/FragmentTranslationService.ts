@@ -31,11 +31,7 @@ function buildOptionalSection(title: string, value: string | undefined): string 
     return ""
 }
 
-function buildContextText(params: {
-    previousSentences?: string[]
-    highlightedText: string
-    nextSentences?: string[]
-}): string {
+function buildContextText(params: { previousSentences?: string[]; highlightedText: string; nextSentences?: string[] }): string {
     const cleanPrevious = (params.previousSentences ?? []).map((s) => s.replace(/\n/g, " ").trim()).filter(Boolean)
     const cleanNext = (params.nextSentences ?? []).map((s) => s.replace(/\n/g, " ").trim()).filter(Boolean)
 
@@ -219,10 +215,7 @@ export async function createFragmentTranslationService(config: LLMConfig): Promi
     return service
 }
 
-export async function translateFragment(
-    request: FragmentTranslationRequest,
-    config: LLMConfig
-): Promise<FragmentTranslationResult> {
+export async function translateFragment(request: FragmentTranslationRequest, config: LLMConfig): Promise<FragmentTranslationResult> {
     const service = await createFragmentTranslationService(config)
     return service.translateFragment(request)
 }

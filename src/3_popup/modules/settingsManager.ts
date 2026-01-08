@@ -128,20 +128,20 @@ export function setupSettingChangeListeners(): void {
 
     // Add change listeners to all select elements
     const selects = document.querySelectorAll("select[data-setting]")
-        selects.forEach((select) => {
-            select.addEventListener("change", async (event) => {
-                const selectElement = event.target as HTMLSelectElement
-                const settingKey = selectElement.dataset.setting as keyof types.UserSettings
-                if (settingKey) {
-                    const value = selectElement.value
-                    await saveSetting(settingKey, value)
+    selects.forEach((select) => {
+        select.addEventListener("change", async (event) => {
+            const selectElement = event.target as HTMLSelectElement
+            const settingKey = selectElement.dataset.setting as keyof types.UserSettings
+            if (settingKey) {
+                const value = selectElement.value
+                await saveSetting(settingKey, value)
 
-                    // Show refresh reminder toast for translation font size preset change
-                    if (settingKey === "translationFontSizePreset") {
-                        const message = i18nModule.translate("popup.refreshReminder")
-                        toastManagerModule.showToast(message, "info")
-                    }
+                // Show refresh reminder toast for translation font size preset change
+                if (settingKey === "translationFontSizePreset") {
+                    const message = i18nModule.translate("popup.refreshReminder")
+                    toastManagerModule.showToast(message, "info")
                 }
-            })
+            }
+        })
     })
 }

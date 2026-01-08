@@ -8,9 +8,9 @@ import { getDeviceUID } from "@/0_common/utils/storageManager"
 import * as backendModule from "@/5_backend"
 import { BUILD_TIME_CREDENTIALS, hasBuildTimeCredentials } from "@/5_backend/config/credentials"
 import { CLIENT_VERSION, CONFIG_ENDPOINTS, CONFIG_REFRESH_INTERVAL_MS, DEFAULT_BASE_URL } from "@/5_backend/constants"
-import * as loggerModule from '@/0_common/utils/logger';
+import * as loggerModule from "@/0_common/utils/logger"
 
-const logger = loggerModule.createLogger('2_background/services/ServiceInitializer');
+const logger = loggerModule.createLogger("2_background/services/ServiceInitializer")
 
 /**
  * Initialize API Service with configuration
@@ -25,8 +25,8 @@ export async function initializeAPIService(): Promise<void> {
     if (hasBuildTimeCredentials()) {
         logger.info("Using build-time injected credentials")
         const credentials = {
-            apiKey: BUILD_TIME_CREDENTIALS.apiKey!,
-            apiSecret: BUILD_TIME_CREDENTIALS.apiSecret!,
+            apiKey: BUILD_TIME_CREDENTIALS.apiKey,
+            apiSecret: BUILD_TIME_CREDENTIALS.apiSecret,
         }
 
         // Get or generate device UID

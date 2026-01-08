@@ -17,9 +17,9 @@ import type * as types from "@/0_common/types"
 import { DEFAULT_USER_SETTINGS } from "@/0_common/types"
 import * as translationFontSizeModule from "@/0_common/constants/translationFontSize"
 import type { CachedConfig, CloudConfig } from "@/5_backend/types/ConfigTypes"
-import * as loggerModule from '@/0_common/utils/logger';
+import * as loggerModule from "@/0_common/utils/logger"
 
-const logger = loggerModule.createLogger('0_common/utils/storageManager');
+const logger = loggerModule.createLogger("0_common/utils/storageManager")
 const isCommunityEdition = APP_EDITION === "community"
 
 const STORAGE_KEYS = {
@@ -49,9 +49,7 @@ function normalizeUserSettings(settings: Partial<types.UserSettings>): types.Use
         customApi: normalizedCustomApi,
     }
 
-    const resolvedFont = translationFontSizeModule.resolveTranslationFontSize(
-        mergedSettings.translationFontSizePreset
-    )
+    const resolvedFont = translationFontSizeModule.resolveTranslationFontSize(mergedSettings.translationFontSizePreset)
 
     return {
         ...mergedSettings,
@@ -138,15 +136,15 @@ export async function getUserSettings(): Promise<types.UserSettings> {
  * @returns Language code for target language
  */
 function detectBrowserLanguage(): string {
-    const SUPPORTED_LANGUAGES = ['en', 'zh', 'es', 'ja', 'fr', 'de', 'ko', 'ru']
+    const SUPPORTED_LANGUAGES = ["en", "zh", "es", "ja", "fr", "de", "ko", "ru"]
 
     // Get browser language (e.g., "zh-CN", "en-US", "ja")
     // Use optional chaining and nullish coalescing for safe access
-    const browserLang = (navigator.language || navigator.languages?.[0] || 'en')
+    const browserLang = navigator.language || navigator.languages?.[0] || "en"
 
     // Extract primary language code (before hyphen)
-    const parts = browserLang.split('-')
-    const primaryLang = parts[0]?.toLowerCase() || 'en'
+    const parts = browserLang.split("-")
+    const primaryLang = parts[0]?.toLowerCase() || "en"
 
     // Check if primary language is in supported list
     if (SUPPORTED_LANGUAGES.includes(primaryLang)) {
@@ -156,7 +154,7 @@ function detectBrowserLanguage(): string {
 
     // Default to English if no match
     logger.info("Browser language not matched, defaulting to 'en'")
-    return 'en'
+    return "en"
 }
 
 /**

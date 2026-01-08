@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="resources/icons/icon-128.png" width="80" alt="Logo" />
+  <img src="../../resources/icons/icon-128.png" width="80" alt="Logo" />
 </p>
 
 <h1 align="center">TapWord Translator</h1>
@@ -10,7 +10,7 @@
 
 <p align="center">
     <br> 
-    <a href="README.md">English</a> | 
+    <a href="../../README.md">English</a> | 
     <a href="README-CN.md">简体中文</a> | 
     <a href="README-DE.md">Deutsch</a> | 
     <b>Español</b> | 
@@ -33,7 +33,7 @@
 
 ---
 
-![Demostración de TapWord Translator](resources/public/demo.gif)
+![Demostración de TapWord Translator](../../resources/public/demo.gif)
 
 ## 📖 Introducción
 

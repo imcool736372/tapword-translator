@@ -18,9 +18,9 @@ export function logWidths(phase: string): void {
     try {
         const htmlEl = document.documentElement
         const bodyEl = document.body
-        const container = document.querySelector(".popup-container") as HTMLElement | null
-        const header = document.querySelector(".popup-header") as HTMLElement | null
-        const settings = document.querySelector(".settings-list") as HTMLElement | null
+        const container = document.querySelector(".popup-container")
+        const header = document.querySelector(".popup-header")
+        const settings = document.querySelector(".settings-list")
 
         const metrics = {
             phase,
@@ -35,11 +35,11 @@ export function logWidths(phase: string): void {
             },
             container: container
                 ? {
-                    present: true,
-                    clientWidth: container.clientWidth,
-                    scrollWidth: container.scrollWidth,
-                    offsetWidth: container.offsetWidth,
-                }
+                      present: true,
+                      clientWidth: container.clientWidth,
+                      scrollWidth: container.scrollWidth,
+                      offsetWidth: container.offsetWidth,
+                  }
                 : { present: false },
             header: header ? { clientWidth: header.clientWidth } : { present: false },
             settings: settings ? { clientWidth: settings.clientWidth } : { present: false },

@@ -60,10 +60,7 @@ function buildLocalLlmConfig(settings: UserSettings): LLMConfig | null {
     const model = customApi.model.trim()
 
     if (!apiKey || !baseUrl || !model) {
-        throw new TranslationError(
-            i18nModule.translate("error.customApiConfigMissing"),
-            i18nModule.translate("error.short.customApiConfigMissing")
-        )
+        throw new TranslationError(i18nModule.translate("error.customApiConfigMissing"), i18nModule.translate("error.short.customApiConfigMissing"))
     }
 
     return {
@@ -158,47 +155,29 @@ async function translateFragmentWithLocal(params: TranslateFragmentParams, confi
 function handleAPIError(error: APIError): never {
     switch (error.type) {
         case "rateLimited":
-            throw new TranslationError(
-                i18nModule.translate("error.rateLimited"),
-                i18nModule.translate("error.short.rateLimited")
-            )
+            throw new TranslationError(i18nModule.translate("error.rateLimited"), i18nModule.translate("error.short.rateLimited"))
 
         case "businessError":
             switch (error.code) {
                 case 20001:
-                    throw new TranslationError(
-                        i18nModule.translate("error.contentBlocked"),
-                        i18nModule.translate("error.short.contentBlocked")
-                    )
+                    throw new TranslationError(i18nModule.translate("error.contentBlocked"), i18nModule.translate("error.short.contentBlocked"))
                 case 20429:
                 case 20504:
-                    throw new TranslationError(
-                        i18nModule.translate("error.serverBusy"),
-                        i18nModule.translate("error.short.serverBusy")
-                    )
+                    throw new TranslationError(i18nModule.translate("error.serverBusy"), i18nModule.translate("error.short.serverBusy"))
                 case 20500:
                     throw new TranslationError(
                         i18nModule.translate("error.serviceUnavailable"),
                         i18nModule.translate("error.short.serviceUnavailable")
                     )
                 default:
-                    throw new TranslationError(
-                        i18nModule.translate("error.serverBusy"),
-                        i18nModule.translate("error.short.serverBusy")
-                    )
+                    throw new TranslationError(i18nModule.translate("error.serverBusy"), i18nModule.translate("error.short.serverBusy"))
             }
 
         case "serverAlert":
-            throw new TranslationError(
-                error.message || i18nModule.translate("error.serverBusy"),
-                i18nModule.translate("error.short.serverBusy")
-            )
+            throw new TranslationError(error.message || i18nModule.translate("error.serverBusy"), i18nModule.translate("error.short.serverBusy"))
 
         default:
-            throw new TranslationError(
-                i18nModule.translate("error.serverBusy"),
-                i18nModule.translate("error.short.serverBusy")
-            )
+            throw new TranslationError(i18nModule.translate("error.serverBusy"), i18nModule.translate("error.short.serverBusy"))
     }
 }
 
@@ -294,10 +273,7 @@ export async function translateWord(params: TranslateParams): Promise<Translatio
 
         // Handle unexpected errors
         logger.error("Unexpected translation error:", error)
-        throw new TranslationError(
-            i18nModule.translate("error.serverBusy"),
-            i18nModule.translate("error.short.serverBusy")
-        )
+        throw new TranslationError(i18nModule.translate("error.serverBusy"), i18nModule.translate("error.short.serverBusy"))
     }
 }
 
@@ -387,10 +363,7 @@ export async function translateFragment(params: TranslateFragmentParams): Promis
 
         // Handle unexpected errors
         logger.error("Unexpected fragment translation error:", error)
-        throw new TranslationError(
-            i18nModule.translate("error.serverBusy"),
-            i18nModule.translate("error.short.serverBusy")
-        )
+        throw new TranslationError(i18nModule.translate("error.serverBusy"), i18nModule.translate("error.short.serverBusy"))
     }
 }
 
